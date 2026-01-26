@@ -1,0 +1,23 @@
+{
+    "name": "Jakkali Lokesh Portfolio",
+    "short_name": "JL Portfolio",
+    "description": "Cybersecurity Analyst Portfolio - SOC L1, Bug Bounty Hunter, VAPT Specialist",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#020c1b",
+    "theme_color": "#00ff88",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "favicon.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "favicon.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "categories": ["portfolio", "cybersecurity", "professional"]
+}

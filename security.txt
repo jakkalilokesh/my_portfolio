@@ -1,0 +1,14 @@
+# Security Policy
+
+Contact: mailto:jakkalilokesh@gmail.com
+Expires: 2027-01-01T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://jakkalilokesh.github.io/.well-known/security.txt
+
+# If you find a security vulnerability in any of my projects,
+# please report it responsibly. I appreciate your help in
+# keeping my work secure.
+
+# Jakkali Lokesh - Cybersecurity Analyst
+# https://github.com/jakkalilokesh
+# https://hackerone.com/jakkalilokesh

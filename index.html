@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Jakkali Lokesh - Cybersecurity Analyst, SOC L1, SIEM, Digital Forensics, VAPT, Bug Bounty Hunter. Portfolio showcasing security expertise and projects.">
+    <meta name="keywords"
+        content="Cybersecurity, SOC Analyst, Bug Bounty, VAPT, Penetration Testing, Digital Forensics, SIEM">
+    <meta name="author" content="Jakkali Lokesh">
+
+    <meta property="og:title" content="Jakkali Lokesh | Cybersecurity Analyst Portfolio">
+    <meta property="og:description"
+        content="Passionate Cybersecurity Analyst specializing in SOC Analysis, Threat Detection, VAPT, and Digital Forensics. View my projects and experience.">
+    <meta property="og:image" content="profile.png">
+    <meta property="og:type" content="website">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Jakkali Lokesh | Cybersecurity Analyst">
+    <meta name="twitter:description" content="Cybersecurity Analyst | SOC L1 | Bug Bounty Hunter | VAPT Specialist">
+    <meta name="twitter:image" content="profile.png">
+
+    <title>Jakkali Lokesh | Cybersecurity Analyst Portfolio</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#00ff88">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div id="preloader">
+        <video class="loader-video" autoplay muted loop playsinline>
+            <source src="https://videos.pexels.com/video-files/3129671/3129671-sd_640_360_30fps.mp4" type="video/mp4">
+        </video>
+        <div class="loader-overlay"></div>
+        <div class="loader-container">
+            <div class="cyber-loader">
+                <div class="loader-shield">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="loader-scan"></div>
+                <div class="loader-circuit"></div>
+            </div>
+            <div class="loader-text">
+                <div class="terminal-loader">
+                    <span class="loader-prompt">&gt;</span>
+                    <span class="loader-command">Initializing Security Protocols</span>
+                    <span class="loader-cursor">_</span>
+                </div>
+                <div class="loading-bar">
+                    <div class="loading-progress"></div>
+                </div>
+                <div class="loader-status">Securing connection...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Background for Entire Portfolio -->
+    <div class="video-bg-container">
+        <video class="video-bg" autoplay muted loop playsinline>
+            <source src="https://videos.pexels.com/video-files/3129671/3129671-sd_640_360_30fps.mp4" type="video/mp4">
+        </video>
+        <div class="video-bg-overlay"></div>
+    </div>
+    <div class="video-bg-overlay"></div>
+    </div>
+
+    <canvas id="matrix-canvas"></canvas>
+
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <div class="scroll-progress" id="scroll-progress"></div>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">
+                <img src="favicon.png" alt="JL Logo" class="nav-logo-img" loading="lazy">
+                <span class="logo-bracket">&lt;</span>
+                <span class="logo-text">JL</span>
+                <span class="logo-slash">/</span>
+                <span class="logo-bracket">&gt;</span>
+            </a>
+
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="#experience" class="nav-link">Experience</a></li>
+                <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
+                <li class="nav-item"><a href="#certifications" class="nav-link">Certifications</a></li>
+                <li class="nav-item"><a href="#achievements" class="nav-link">Achievements</a></li>
+                <li class="nav-item"><a href="#education" class="nav-link">Education</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                <i class="fas fa-moon" id="theme-icon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+
+        <section id="home" class="hero-section">
+            <div class="hero-content">
+                <div class="hero-glitch-container">
+                    <div class="terminal-header">
+                        <span class="terminal-dot red"></span>
+                        <span class="terminal-dot yellow"></span>
+                        <span class="terminal-dot green"></span>
+                        <span class="terminal-title">lokesh@cybersec ~ </span>
+                    </div>
+                    <div class="hero-text-container">
+                        <p class="hero-greeting" data-aos="fade-up" data-aos-delay="200">
+                            <span class="code-comment">// Hello World, I am</span>
+                        </p>
+                        <h1 class="hero-name glitch" data-text="JAKKALI LOKESH" data-aos="fade-up" data-aos-delay="400">
+                            JAKKALI LOKESH
+                        </h1>
+                        <div class="hero-title-wrapper" data-aos="fade-up" data-aos-delay="600">
+                            <span class="hero-title-prefix">&gt;&gt;</span>
+                            <h2 class="hero-title">
+                                <span class="typing-text"></span>
+                                <span class="cursor">|</span>
+                            </h2>
+                        </div>
+                        <p class="hero-description" data-aos="fade-up" data-aos-delay="800">
+                            Passionate Cybersecurity analyst focused on detecting, analyzing, and responding to attacks
+                            using <span class="highlight">SIEM</span>, <span class="highlight">endpoint
+                                telemetry</span>,
+                            and <span class="highlight">network logs</span>. Built hands-on experience through labs,
+                            simulations, and real attack analysis.
+                        </p>
+                        <div class="hero-stats" data-aos="fade-up" data-aos-delay="900">
+                            <div class="stat-item">
+                                <span class="stat-number" data-count="10">0</span>
+                                <span class="stat-label">Certifications</span>
+                            </div>
+                            <div class="stat-divider"></div>
+                            <div class="stat-item">
+                                <span class="stat-number" data-count="6">0</span>
+                                <span class="stat-label">Projects</span>
+                            </div>
+                            <div class="stat-divider"></div>
+                            <div class="stat-item">
+                                <span class="stat-number" data-count="5">0</span>
+                                <span class="stat-label">Experiences</span>
+                            </div>
+                        </div>
+                        <div class="hero-cta" data-aos="fade-up" data-aos-delay="1000">
+                            <a href="Jakkali_Lokesh_SOC_Analyst_L1.pdf" download class="btn btn-primary">
+                                <span class="btn-text">Download Resume</span>
+                                <span class="btn-icon"><i class="fas fa-download"></i></span>
+                            </a>
+                            <a href="#projects" class="btn btn-secondary">
+                                <span class="btn-text">View My Work</span>
+                                <span class="btn-icon"><i class="fas fa-arrow-right"></i></span>
+                            </a>
+                            <a href="#contact" class="btn btn-outline">
+                                <span class="btn-text">Get In Touch</span>
+                                <span class="btn-icon"><i class="fas fa-paper-plane"></i></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image" data-aos="fade-left" data-aos-delay="600">
+                    <div class="profile-container">
+                        <div class="profile-ring"></div>
+                        <div class="profile-ring"></div>
+                        <div class="profile-ring"></div>
+                        <div class="profile-glow"></div>
+                        <img src="profile.png" alt="Jakkali Lokesh" class="profile-image" loading="lazy">
+                        <div class="profile-status">
+                            <span class="status-dot"></span>
+                            <span class="status-text">Available for Hire</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <div class="mouse">
+                    <div class="wheel"></div>
+                </div>
+                <span>Scroll Down</span>
+            </div>
+        </section>
+
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <span class="section-tag">&lt;about&gt;</span>
+                    <h2 class="section-title">About Me</h2>
+                    <div class="section-line"></div>
+                </div>
+
+                <div class="about-grid">
+                    <!-- Bio Card -->
+                    <div class="about-bio-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="bio-header">
+                            <div class="bio-icon">
+                                <i class="fas fa-user-shield"></i>
+                            </div>
+                            <div class="bio-title">
+                                <h3>Cybersecurity Analyst</h3>
+                                <span class="bio-location"><i class="fas fa-map-marker-alt"></i> Kurnool, Andhra
+                                    Pradesh, India</span>
+                            </div>
+                        </div>
+                        <div class="bio-content">
+                            <p>A passionate security professional specializing in <span class="highlight">Blue
+                                    Teaming</span>,
+                                <span class="highlight">SOC Analysis</span>, <span class="highlight">Threat Detection &
+                                    Response</span>,
+                                and <span class="highlight">Digital Forensics</span>.
+                            </p>
+                            <p>Built hands-on experience through structured labs on <span
+                                    class="highlight">TryHackMe</span>,
+                                <span class="highlight">PortSwigger</span>, <span class="highlight">LetsDefend</span>,
+                                and
+                                <span class="highlight">HackTheBox</span>, developing strong skills in analyzing
+                                malware,
+                                investigating incidents, and building detection rules.
+                            </p>
+                        </div>
+                        <div class="bio-highlights">
+                            <div class="bio-highlight-item">
+                                <i class="fas fa-trophy"></i>
+                                <span>$100 Bug Bounty on Udemy</span>
+                            </div>
+                            <div class="bio-highlight-item">
+                                <i class="fas fa-flag"></i>
+                                <span>CTF Competitor</span>
+                            </div>
+                            <div class="bio-highlight-item">
+                                <i class="fas fa-search"></i>
+                                <span>Active Threat Hunter</span>
+                            </div>
+                        </div>
+                        <div class="bio-status">
+                            <div class="status-indicator"></div>
+                            <span>Actively seeking SOC Analyst, Security Analyst & VAPT roles</span>
+                        </div>
+                    </div>
+
+                    <!-- Technical Arsenal -->
+                    <div class="arsenal-container" data-aos="fade-up" data-aos-delay="200">
+                        <div class="arsenal-header">
+                            <i class="fas fa-crosshairs"></i>
+                            <h3>Technical Arsenal</h3>
+                        </div>
+
+                        <div class="arsenal-grid">
+                            <div class="arsenal-category" data-category="defensive">
+                                <h4><i class="fas fa-shield-alt"></i> Blue Team</h4>
+                                <div class="arsenal-tags">
+                                    <span>SOC Analysis</span>
+                                    <span>Threat Detection</span>
+                                    <span>Incident Response</span>
+                                    <span>Malware Analysis</span>
+                                    <span>MITRE ATT&CK</span>
+                                    <span>Digital Forensics</span>
+                                </div>
+                            </div>
+
+                            <div class="arsenal-category" data-category="offensive">
+                                <h4><i class="fas fa-skull-crossbones"></i> Red Team</h4>
+                                <div class="arsenal-tags">
+                                    <span>VAPT</span>
+                                    <span>Penetration Testing</span>
+                                    <span>Web App Security</span>
+                                    <span>Bug Bounty</span>
+                                    <span>OWASP Top 10</span>
+                                </div>
+                            </div>
+
+                            <div class="arsenal-category" data-category="tools">
+                                <h4><i class="fas fa-tools"></i> Security Tools</h4>
+                                <div class="arsenal-tags">
+                                    <span>Splunk</span>
+                                    <span>Wazuh</span>
+                                    <span>ELK Stack</span>
+                                    <span>Wireshark</span>
+                                    <span>Burp Suite</span>
+                                    <span>Nmap</span>
+                                    <span>Metasploit</span>
+                                    <span>YARA</span>
+                                </div>
+                            </div>
+
+                            <div class="arsenal-category" data-category="code">
+                                <h4><i class="fas fa-code"></i> Programming</h4>
+                                <div class="arsenal-tags">
+                                    <span>Python</span>
+                                    <span>Bash</span>
+                                    <span>PowerShell</span>
+                                    <span>JavaScript</span>
+                                    <span>SQL</span>
+                                </div>
+                            </div>
+
+                            <div class="arsenal-category" data-category="platforms">
+                                <h4><i class="fas fa-gamepad"></i> Platforms</h4>
+                                <div class="arsenal-tags">
+                                    <span>TryHackMe</span>
+                                    <span>HackTheBox</span>
+                                    <span>LetsDefend</span>
+                                    <span>PortSwigger</span>
+                                    <span>HackerOne</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <span class="section-close" data-aos="fade-up">&lt;/about&gt;</span>
+            </div>
+        </section>
+
+        <section id="experience" class="experience-section">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <span class="section-tag">&lt;experience&gt;</span>
+                    <h2 class="section-title">Work Experience</h2>
+                    <div class="section-line"></div>
+                </div>
+
+                <div class="timeline">
+                    <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+                        <div class="timeline-marker">
+                            <i class="fas fa-bug"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <h3 class="timeline-title">Bug Bounty Hunter / Researcher</h3>
+                                <span class="timeline-company">
+                                    <i class="fas fa-building"></i> HackerOne
+                                </span>
+                            </div>
+                            <span class="timeline-date">
+                                <i class="fas fa-calendar-alt"></i> Apr 2024 – Present
+                            </span>
+                            <p class="timeline-description">
+                                Actively hunting vulnerabilities across various platforms. Earned <span
+                                    class="achievement">$100 bounty</span>
+                                for discovering a critical <span class="highlight">Subdomain Takeover</span>
+                                vulnerability on Udemy.
+                            </p>
+                            <div class="timeline-tags">
+                                <span class="tag">Bug Bounty</span>
+                                <span class="tag">Subdomain Takeover</span>
+                                <span class="tag">Web Security</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+                        <div class="timeline-marker">
+                            <i class="fas fa-user-secret"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <h3 class="timeline-title">Cybersecurity & Ethical Hacking (VAPT) Intern</h3>
+                                <span class="timeline-company">
+                                    <i class="fas fa-building"></i> SURE TRUST
+                                </span>
+                            </div>
+                            <span class="timeline-date">
+                                <i class="fas fa-calendar-alt"></i> Jun 2024 – Dec 2024
+                            </span>
+                            <p class="timeline-description">
+                                Focused on Vulnerability Assessment and Penetration Testing (VAPT), GRC frameworks,
+                                and Digital Forensics methodologies.
+                            </p>
+                            <div class="timeline-tags">
+                                <span class="tag">VAPT</span>
+                                <span class="tag">GRC</span>
+                                <span class="tag">Digital Forensics</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
+                        <div class="timeline-marker">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <h3 class="timeline-title">Cloud Computing - DevOps Intern</h3>
+                                <span class="timeline-company">
+                                    <i class="fas fa-building"></i> APSSDC
+                                </span>
+                            </div>
+                            <span class="timeline-date">
+                                <i class="fas fa-calendar-alt"></i> May 2024 – Jul 2024
+                            </span>
+                            <p class="timeline-description">
+                                Worked with AWS services including EC2, S3, RDS, and CloudFront.
+                                Gained hands-on experience in cloud infrastructure and DevOps practices.
+                            </p>
+                            <div class="timeline-tags">
+                                <span class="tag">AWS</span>
+                                <span class="tag">DevOps</span>
+                                <span class="tag">Cloud Infrastructure</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" data-aos="fade-up" data-aos-delay="400">
+                        <div class="timeline-marker">
+                            <i class="fas fa-shield-virus"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <h3 class="timeline-title">Cyber Security Intern</h3>
+                                <span class="timeline-company">
+                                    <i class="fas fa-building"></i> The Red Users
+                                </span>
+                            </div>
+                            <span class="timeline-date">
+                                <i class="fas fa-calendar-alt"></i> Feb 2024 – Mar 2024
+                            </span>
+                            <p class="timeline-description">
+                                Gained foundational experience in cybersecurity operations and threat analysis.
+                            </p>
+                            <div class="timeline-tags">
+                                <span class="tag">Cybersecurity</span>
+                                <span class="tag">Threat Analysis</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" data-aos="fade-up" data-aos-delay="500">
+                        <div class="timeline-marker">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <h3 class="timeline-title">Cloud Computing Engineering Intern</h3>
+                                <span class="timeline-company">
+                                    <i class="fas fa-building"></i> ExcelR
+                                </span>
+                            </div>
+                            <span class="timeline-date">
+                                <i class="fas fa-calendar-alt"></i> Jul 2024 – Aug 2024
+                            </span>
+                            <p class="timeline-description">
+                                Learned cloud computing fundamentals and worked on cloud-based projects.
+                            </p>
+                            <div class="timeline-tags">
+                                <span class="tag">Cloud Computing</span>
+                                <span class="tag">Azure</span>
+                                <span class="tag">AWS</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <span class="section-close" data-aos="fade-up">&lt;/experience&gt;</span>
+            </div>
+        </section>
+
+        <section id="projects" class="projects-section">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <span class="section-tag">&lt;projects&gt;</span>
+                    <h2 class="section-title">Featured Projects</h2>
+                    <div class="section-line"></div>
+                </div>
+
+                <div class="projects-filter" data-aos="fade-up">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="security">Security</button>
+                    <button class="filter-btn" data-filter="python">Python</button>
+                    <button class="filter-btn" data-filter="web">Web</button>
+                </div>
+
+                <div class="projects-grid">
+
+                    <div class="project-card featured" data-category="security web" data-aos="fade-up"
+                        data-aos-delay="100">
+                        <div class="project-badge">LIVE</div>
+                        <div class="project-image">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="https://jakkalilokesh.github.io/secure-encryption-tool/" target="_blank"
+                                        class="project-link live" title="Live Demo">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                    <a href="https://github.com/jakkalilokesh/secure-encryption-tool" target="_blank"
+                                        class="project-link" title="View Code">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="project-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Secure Encryption Tool</h3>
+                            <p class="project-description">
+                                Web-based application for encrypting large files (up to 10GB) using
+                                <span class="highlight">AES-256-GCM</span> and <span
+                                    class="highlight">ChaCha20-Poly1305</span>
+                                encryption algorithms.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">AES-256</span>
+                                <span class="tech-tag">Cryptography</span>
+                            </div>
+                        </div>
+                        <div class="project-footer">
+                            <span class="project-category"><i class="fas fa-shield-alt"></i> Security</span>
+                            <a href="https://jakkalilokesh.github.io/secure-encryption-tool/" target="_blank"
+                                class="project-demo-btn">Try it Live <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-category="security python" data-aos="fade-up" data-aos-delay="200">
+                        <div class="project-image">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="https://github.com/jakkalilokesh/packet_sniffer" target="_blank"
+                                        class="project-link" title="View Code">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="project-icon">
+                                <i class="fas fa-network-wired"></i>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Packet Sniffer</h3>
+                            <p class="project-description">
+                                A Python-based network packet analysis tool for capturing and inspecting
+                                network traffic in real-time. Essential tool for network security analysis.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Networking</span>
+                                <span class="tech-tag">Scapy</span>
+                            </div>
+                        </div>
+                        <div class="project-footer">
+                            <span class="project-category"><i class="fas fa-shield-alt"></i> Security</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-category="security web" data-aos="fade-up" data-aos-delay="300">
+                        <div class="project-image">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="https://github.com/jakkalilokesh/Data_Encryption_File_Security_Tool"
+                                        target="_blank" class="project-link" title="View Code">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="project-icon">
+                                <i class="fas fa-file-shield"></i>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Data Encryption File Security</h3>
+                            <p class="project-description">
+                                Comprehensive file security tool focusing on data encryption and protection
+                                mechanisms for sensitive files.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">Encryption</span>
+                                <span class="tech-tag">File Security</span>
+                            </div>
+                        </div>
+                        <div class="project-footer">
+                            <span class="project-category"><i class="fas fa-shield-alt"></i> Security</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-category="security python" data-aos="fade-up" data-aos-delay="400">
+                        <div class="project-image">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="https://github.com/jakkalilokesh/password_generator" target="_blank"
+                                        class="project-link" title="View Code">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="project-icon">
+                                <i class="fas fa-key"></i>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Password Generator</h3>
+                            <p class="project-description">
+                                Python application for generating cryptographically secure and random
+                                passwords with customizable complexity options.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Cryptography</span>
+                                <span class="tech-tag">Security</span>
+                            </div>
+                        </div>
+                        <div class="project-footer">
+                            <span class="project-category"><i class="fas fa-shield-alt"></i> Security</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-category="security web" data-aos="fade-up" data-aos-delay="500">
+                        <div class="project-image">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="https://github.com/jakkalilokesh/Caesar_Cipher_Tool" target="_blank"
+                                        class="project-link" title="View Code">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="project-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Caesar Cipher Tool</h3>
+                            <p class="project-description">
+                                Classic cipher implementation for text encryption/decryption.
+                                An educational tool demonstrating basic cryptographic concepts.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">HTML</span>
+                                <span class="tech-tag">CSS</span>
+                                <span class="tech-tag">Cryptography</span>
+                            </div>
+                        </div>
+                        <div class="project-footer">
+                            <span class="project-category"><i class="fas fa-code"></i> Web</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-category="python" data-aos="fade-up" data-aos-delay="600">
+                        <div class="project-image">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="https://github.com/jakkalilokesh/GUI_QR_GEN" target="_blank"
+                                        class="project-link" title="View Code">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="project-icon">
+                                <i class="fas fa-qrcode"></i>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">GUI QR Generator</h3>
+                            <p class="project-description">
+                                Graphical user interface application for generating QR codes with
+                                customization options. Built with Python and Tkinter.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Tkinter</span>
+                                <span class="tech-tag">GUI</span>
+                            </div>
+                        </div>
+                        <div class="project-footer">
+                            <span class="project-category"><i class="fab fa-python"></i> Python</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="projects-cta" data-aos="fade-up">
+                    <a href="https://github.com/jakkalilokesh?tab=repositories" target="_blank" class="btn btn-outline">
+                        <span class="btn-text">View All Projects</span>
+                        <span class="btn-icon"><i class="fab fa-github"></i></span>
+                    </a>
+                </div>
+
+                <span class="section-close" data-aos="fade-up">&lt;/projects&gt;</span>
+            </div>
+        </section>
+
+        <section id="certifications" class="certifications-section">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <span class="section-tag">&lt;certifications&gt;</span>
+                    <h2 class="section-title">Certifications & Badges</h2>
+                    <div class="section-line"></div>
+                </div>
+
+
+                <div class="certifications-grid">
+                    <div class="cert-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="cert-icon ibm">
+                            <i class="fas fa-shield-halved"></i>
+                        </div>
+                        <h4>Cybersecurity Fundamentals</h4>
+                        <span class="cert-issuer">IBM</span>
+                    </div>
+
+                    <div class="cert-card" data-aos="fade-up" data-aos-delay="150">
+                        <div class="cert-icon google">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <h4>Foundations of Cybersecurity</h4>
+                        <span class="cert-issuer">Google</span>
+                    </div>
+
+                    <div class="cert-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="cert-icon cisco">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <h4>Introduction to Cybersecurity</h4>
+                        <span class="cert-issuer">Cisco</span>
+                    </div>
+
+                    <div class="cert-card" data-aos="fade-up" data-aos-delay="250">
+                        <div class="cert-icon udemy">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <h4>Networking Fundamentals</h4>
+                        <span class="cert-issuer">Udemy</span>
+                    </div>
+
+                    <div class="cert-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="cert-icon fcc">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h4>Responsive Web Design</h4>
+                        <span class="cert-issuer">freeCodeCamp</span>
+                    </div>
+
+                    <div class="cert-card" data-aos="fade-up" data-aos-delay="350">
+                        <div class="cert-icon fcc">
+                            <i class="fab fa-python"></i>
+                        </div>
+                        <h4>Python for Scientific Computing</h4>
+                        <span class="cert-issuer">freeCodeCamp</span>
+                    </div>
+
+                    <div class="cert-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="cert-icon tryhackme">
+                            <i class="fas fa-terminal"></i>
+                        </div>
+                        <h4>SOC Level 1 Path</h4>
+                        <span class="cert-issuer">TryHackMe</span>
+                    </div>
+
+                    <div class="cert-card" data-aos="fade-up" data-aos-delay="450">
+                        <div class="cert-icon letsdefend">
+                            <i class="fas fa-shield-virus"></i>
+                        </div>
+                        <h4>SOC Analyst Learning Path</h4>
+                        <span class="cert-issuer">LetsDefend</span>
+                    </div>
+
+                    <div class="cert-card" data-aos="fade-up" data-aos-delay="500">
+                        <div class="cert-icon portswigger">
+                            <i class="fas fa-bug"></i>
+                        </div>
+                        <h4>Web Security Academy</h4>
+                        <span class="cert-issuer">PortSwigger</span>
+                    </div>
+
+                    <div class="cert-card" data-aos="fade-up" data-aos-delay="550">
+                        <div class="cert-icon aws">
+                            <i class="fab fa-aws"></i>
+                        </div>
+                        <h4>AWS Cloud Practitioner</h4>
+                        <span class="cert-issuer">Amazon Web Services</span>
+                    </div>
+                </div>
+
+                <div class="cert-counter" data-aos="fade-up">
+                    <div class="counter-item">
+                        <span class="counter-number" data-count="10">0</span>
+                        <span class="counter-label">Total Certifications</span>
+                    </div>
+                </div>
+
+                <span class="section-close" data-aos="fade-up">&lt;/certifications&gt;</span>
+            </div>
+        </section>
+
+        <section id="achievements" class="achievements-section">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <span class="section-tag">&lt;achievements&gt;</span>
+                    <h2 class="section-title">Hall of Fame</h2>
+                    <div class="section-line"></div>
+                </div>
+
+                <div class="achievements-grid">
+                    <div class="achievement-card bounty" data-aos="fade-up" data-aos-delay="100">
+                        <div class="achievement-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div class="achievement-content">
+                            <span class="achievement-label">Bug Bounty</span>
+                            <h3 class="achievement-title">$100 Bounty - Udemy</h3>
+                            <p class="achievement-description">
+                                Discovered and reported a critical <span class="highlight">Subdomain Takeover</span>
+                                vulnerability
+                                on Udemy's infrastructure. Responsibly disclosed through HackerOne.
+                            </p>
+                            <div class="achievement-meta">
+                                <span class="meta-item"><i class="fas fa-calendar"></i> 2024</span>
+                                <span class="meta-item"><i class="fas fa-shield-alt"></i> Critical Severity</span>
+                            </div>
+                        </div>
+                        <div class="bounty-badge">
+                            <span class="bounty-amount">$100</span>
+                            <span class="bounty-label">Reward</span>
+                        </div>
+                    </div>
+
+                    <div class="achievement-card ctf" data-aos="fade-up" data-aos-delay="200">
+                        <div class="achievement-icon">
+                            <i class="fas fa-flag"></i>
+                        </div>
+                        <div class="achievement-content">
+                            <span class="achievement-label">CTF Competition</span>
+                            <h3 class="achievement-title">Hacker's Gambit CTF</h3>
+                            <p class="achievement-description">
+                                Participated in an intense Capture The Flag competition, solving challenges across
+                                <span class="highlight">cryptography</span>, <span class="highlight">web
+                                    exploitation</span>, and <span class="highlight">forensics</span>.
+                            </p>
+                            <div class="achievement-meta">
+                                <span class="meta-item"><i class="fas fa-calendar"></i> 2024</span>
+                                <span class="meta-item"><i class="fas fa-certificate"></i> Certificate of
+                                    Participation</span>
+                            </div>
+                            <a href="https://www.linkedin.com/posts/jakkali-lokesh-a1a809211_ctf-capturetheflag-cybersecurity-activity-7385704155048284160-L_T4"
+                                target="_blank" class="achievement-link">
+                                <i class="fab fa-linkedin"></i> View Certificate
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="achievement-card ctf" data-aos="fade-up" data-aos-delay="300">
+                        <div class="achievement-icon">
+                            <i class="fas fa-flag"></i>
+                        </div>
+                        <div class="achievement-content">
+                            <span class="achievement-label">CTF Competition</span>
+                            <h3 class="achievement-title">Chaitanya CTF 2025</h3>
+                            <p class="achievement-description">
+                                Competed in Chaitanya CTF 2025, tackling advanced security challenges including
+                                <span class="highlight">OSINT</span>, <span class="highlight">reverse
+                                    engineering</span>, and <span class="highlight">network analysis</span>.
+                            </p>
+                            <div class="achievement-meta">
+                                <span class="meta-item"><i class="fas fa-calendar"></i> 2025</span>
+                                <span class="meta-item"><i class="fas fa-certificate"></i> Certificate of
+                                    Participation</span>
+                            </div>
+                            <a href="https://www.linkedin.com/posts/jakkali-lokesh-a1a809211_cybersecurity-ctf-infosec-activity-7394026122516234241-NZdS"
+                                target="_blank" class="achievement-link">
+                                <i class="fab fa-linkedin"></i> View Certificate
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="achievement-card owasp" data-aos="fade-up" data-aos-delay="400">
+                        <div class="achievement-icon">
+                            <i class="fas fa-medal"></i>
+                        </div>
+                        <div class="achievement-content">
+                            <span class="achievement-label">HackerOne Badge</span>
+                            <h3 class="achievement-title">A5: Broken Access Control</h3>
+                            <p class="achievement-description">
+                                Reported a valid <span class="highlight">Broken Access Control</span> vulnerability,
+                                demonstrating expertise in identifying <span class="highlight">OWASP Top 10</span>
+                                security flaws.
+                            </p>
+                            <div class="achievement-meta">
+                                <span class="meta-item"><i class="fas fa-calendar"></i> May 27, 2025</span>
+                                <span class="meta-item"><i class="fas fa-award"></i> 1 Total Award</span>
+                            </div>
+                        </div>
+                        <div class="owasp-badge">
+                            <div class="owasp-shield">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <span class="owasp-title">OWASP A5 2017</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="platform-badges" data-aos="fade-up">
+                    <h3 class="badges-title"><i class="fas fa-gamepad"></i> Training Platforms</h3>
+                    <div class="badges-grid">
+                        <a href="https://tryhackme.com/p/jakkalilokesh" target="_blank"
+                            class="platform-badge tryhackme">
+                            <i class="fas fa-terminal"></i>
+                            <span>TryHackMe</span>
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                        <a href="https://hackerone.com/jakkalilokesh" target="_blank" class="platform-badge hackerone">
+                            <i class="fas fa-bug"></i>
+                            <span>HackerOne</span>
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <span class="section-close" data-aos="fade-up">&lt;/achievements&gt;</span>
+            </div>
+        </section>
+
+        <section id="education" class="education-section">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <span class="section-tag">&lt;education&gt;</span>
+                    <h2 class="section-title">Education</h2>
+                    <div class="section-line"></div>
+                </div>
+
+                <div class="education-grid">
+                    <div class="edu-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="edu-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="edu-content">
+                            <h3>Bachelor of Technology (BTech)</h3>
+                            <h4>Computer Science Engineering</h4>
+                            <p class="edu-institution">
+                                <i class="fas fa-university"></i> Rayalaseema University
+                            </p>
+                            <p class="edu-date">
+                                <i class="fas fa-calendar-alt"></i> 2023 – 2026
+                            </p>
+                            <div class="edu-grade">
+                                <span class="grade-label">CGPA</span>
+                                <span class="grade-value">7.6</span>
+                            </div>
+                            <div class="edu-tags">
+                                <span class="edu-tag">Cybersecurity</span>
+                                <span class="edu-tag">Ethical Hacking</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="edu-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="edu-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div class="edu-content">
+                            <h3>Diploma</h3>
+                            <h4>Bio Medical Engineering</h4>
+                            <p class="edu-institution">
+                                <i class="fas fa-university"></i> SGPR GOVT Polytechnic College
+                            </p>
+                            <p class="edu-date">
+                                <i class="fas fa-calendar-alt"></i> 2019 – 2023
+                            </p>
+                            <div class="edu-grade">
+                                <span class="grade-label">Percentage</span>
+                                <span class="grade-value">75.4%</span>
+                            </div>
+                            <div class="edu-tags">
+                                <span class="edu-tag">Biomedical</span>
+                                <span class="edu-tag">Equipment Maintenance</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <span class="section-close" data-aos="fade-up">&lt;/education&gt;</span>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <span class="section-tag">&lt;contact&gt;</span>
+                    <h2 class="section-title">Get In Touch</h2>
+                    <div class="section-line"></div>
+                </div>
+
+                <div class="contact-content">
+                    <div class="contact-info" data-aos="fade-right">
+                        <div class="contact-text">
+                            <h3>Let's Connect!</h3>
+                            <p>
+                                I'm currently looking for opportunities in <span class="highlight">SOC</span>,
+                                <span class="highlight">Blue Teaming</span>, <span class="highlight">Red Teaming</span>,
+                                and <span class="highlight">Cybersecurity</span> roles. Whether you have a question,
+                                a project idea, or just want to say hi, feel free to reach out!
+                            </p>
+                        </div>
+
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="contact-data">
+                                    <span class="contact-label">Email</span>
+                                    <a href="mailto:jakkalilokesh@gmail.com"
+                                        class="contact-value contact-link">jakkalilokesh@gmail.com</a>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon whatsapp-icon">
+                                    <i class="fab fa-whatsapp"></i>
+                                </div>
+                                <div class="contact-data">
+                                    <span class="contact-label">WhatsApp</span>
+                                    <a href="https://wa.me/917075734356" target="_blank"
+                                        class="contact-value contact-link">+91 7075734356</a>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="contact-data">
+                                    <span class="contact-label">Location</span>
+                                    <span class="contact-value">Kurnool, Andhra Pradesh, India</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="social-links">
+                            <a href="https://www.linkedin.com/in/jakkali-lokesh-a1a809211/" target="_blank"
+                                class="social-link linkedin" title="LinkedIn">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="https://github.com/jakkalilokesh" target="_blank" class="social-link github"
+                                title="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://tryhackme.com/p/jakkalilokesh" target="_blank"
+                                class="social-link tryhackme" title="TryHackMe">
+                                <i class="fas fa-terminal"></i>
+                            </a>
+                            <a href="https://hackerone.com/jakkalilokesh" target="_blank" class="social-link hackerone"
+                                title="HackerOne">
+                                <i class="fas fa-bug"></i>
+                            </a>
+                            <a href="https://instagram.com/_jakkali_lokesh_yadav" target="_blank"
+                                class="social-link instagram" title="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="contact-form-container" data-aos="fade-left">
+                        <form class="contact-form" id="contact-form">
+                            <div class="form-group">
+                                <label for="name">
+                                    <i class="fas fa-user"></i> Name
+                                </label>
+                                <input type="text" id="name" name="name" required placeholder="Your name">
+                                <span class="form-line"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">
+                                    <i class="fas fa-envelope"></i> Email
+                                </label>
+                                <input type="email" id="email" name="email" required
+                                    placeholder="your.email@example.com">
+                                <span class="form-line"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="subject">
+                                    <i class="fas fa-tag"></i> Subject
+                                </label>
+                                <input type="text" id="subject" name="subject" required
+                                    placeholder="What's this about?">
+                                <span class="form-line"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">
+                                    <i class="fas fa-comment-alt"></i> Message
+                                </label>
+                                <textarea id="message" name="message" rows="5" required
+                                    placeholder="Your message here..."></textarea>
+                                <span class="form-line"></span>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-submit">
+                                <span class="btn-text">Send Message</span>
+                                <span class="btn-icon"><i class="fas fa-paper-plane"></i></span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <span class="section-close" data-aos="fade-up">&lt;/contact&gt;</span>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-bracket">&lt;</span>
+                    <span class="logo-text">JL</span>
+                    <span class="logo-slash">/</span>
+                    <span class="logo-bracket">&gt;</span>
+                </div>
+                <p class="footer-text">
+                    Designed & Built by <span class="highlight">Jakkali Lokesh</span>
+                </p>
+                <p class="footer-copyright">
+                    &copy; 2026 All Rights Reserved
+                </p>
+                <div class="footer-meta">
+                    <span class="visitor-counter">
+                        <i class="fas fa-eye"></i>
+                        <span id="visitor-count">Loading...</span> visitors
+                    </span>
+                    <span class="last-updated">Last updated: Jan 2026</span>
+                </div>
+            </div>
+            <div class="footer-wave">
+                <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                    <path
+                        d="M0,50 C150,100 350,0 500,50 C650,100 850,0 1000,50 C1150,100 1350,0 1440,50 L1440,100 L0,100 Z"
+                        fill="currentColor" />
+                </svg>
+            </div>
+        </div>
+    </footer>
+
+    <button id="back-to-top" class="back-to-top" title="Back to Top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
