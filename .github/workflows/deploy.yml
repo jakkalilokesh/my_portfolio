@@ -1,4 +1,4 @@
-name: 🚀 Portfolio CI/CD Pipeline
+﻿name: ðŸš€ Portfolio CI/CD Pipeline
 
 on:
   push:
@@ -11,100 +11,100 @@ env:
   PORTFOLIO_URL: https://jakkalilokesh.github.io
 
 jobs:
-  # ──────────────────────────────────────────────
-  # JOB 1 — Validate & Quality Checks
-  # ──────────────────────────────────────────────
+  # â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  # JOB 1 â€” Validate & Quality Checks
+  # â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   validate:
-    name: 🔍 Validate & Quality Check
+    name: ðŸ” Validate & Quality Check
     runs-on: ubuntu-latest
     steps:
-      - name: 📥 Checkout Code
+      - name: ðŸ“¥ Checkout Code
         uses: actions/checkout@v4
 
-      - name: 📊 Display File Sizes
+      - name: ðŸ“Š Display File Sizes
         run: |
           echo "=============================="
-          echo "📁 Portfolio File Summary"
+          echo "ðŸ“ Portfolio File Summary"
           echo "=============================="
           ls -lh *.html *.css *.js *.json 2>/dev/null || true
           echo ""
           echo "Total size:"
           du -sh . --exclude='.git'
 
-      - name: 🔐 Security Check — Exposed Secrets
+      - name: ðŸ” Security Check â€” Exposed Secrets
         run: |
-          echo "🔍 Scanning for exposed credentials..."
+          echo "ðŸ” Scanning for exposed credentials..."
           # Check for common secret patterns
           if grep -rE "(password|secret|api_key|private_key)\s*=\s*['\"][^'\"]{8,}" \
             --include="*.js" --include="*.html" . 2>/dev/null | \
             grep -v "//\|#\|placeholder\|example\|your_"; then
-            echo "⚠️  Potential secrets found — review above"
+            echo "âš ï¸  Potential secrets found â€” review above"
           else
-            echo "✅ No exposed secrets detected"
+            echo "âœ… No exposed secrets detected"
           fi
 
-      - name: ✅ Check Required Files Exist
+      - name: âœ… Check Required Files Exist
         run: |
           echo "Checking required files..."
-          for f in index.html styles.css script.js manifest.json robots.txt; do
+          for f in index.html main.css script.js manifest.json robots.txt; do
             if [ -f "$f" ]; then
-              echo "✅ $f"
+              echo "âœ… $f"
             else
-              echo "❌ Missing: $f"
+              echo "âŒ Missing: $f"
               exit 1
             fi
           done
 
-      - name: 📏 Check HTML Structure
+      - name: ðŸ“ Check HTML Structure
         run: |
           echo "Validating HTML structure..."
           # Check meta tags
-          grep -q 'meta name="description"' index.html && echo "✅ Meta description found" || echo "⚠️ Missing meta description"
-          grep -q 'meta name="viewport"' index.html && echo "✅ Viewport meta found" || echo "⚠️ Missing viewport meta"
-          grep -q '<title>' index.html && echo "✅ Title tag found" || echo "❌ Missing title tag"
-          grep -q 'rel="manifest"' index.html && echo "✅ Manifest linked" || echo "⚠️ Missing manifest"
-          grep -q 'rel="icon"' index.html && echo "✅ Favicon linked" || echo "⚠️ Missing favicon"
+          grep -q 'meta name="description"' index.html && echo "âœ… Meta description found" || echo "âš ï¸ Missing meta description"
+          grep -q 'meta name="viewport"' index.html && echo "âœ… Viewport meta found" || echo "âš ï¸ Missing viewport meta"
+          grep -q '<title>' index.html && echo "âœ… Title tag found" || echo "âŒ Missing title tag"
+          grep -q 'rel="manifest"' index.html && echo "âœ… Manifest linked" || echo "âš ï¸ Missing manifest"
+          grep -q 'rel="icon"' index.html && echo "âœ… Favicon linked" || echo "âš ï¸ Missing favicon"
 
-      - name: 🎨 Check CSS Variables
+      - name: ðŸŽ¨ Check CSS Variables
         run: |
           echo "Checking design system..."
-          grep -q '\-\-primary' styles.css && echo "✅ CSS custom properties found" || echo "⚠️ No CSS variables"
-          LINES=$(wc -l < styles.css)
-          echo "📐 CSS file: $LINES lines"
+          grep -q '\-\-primary' main.css && echo "âœ… CSS custom properties found" || echo "âš ï¸ No CSS variables"
+          LINES=$(wc -l < main.css)
+          echo "ðŸ“ CSS file: $LINES lines"
 
-      - name: 📱 Check Responsive Design
+      - name: ðŸ“± Check Responsive Design
         run: |
           echo "Checking responsive breakpoints..."
-          grep -c "@media" styles.css | xargs -I{} echo "📱 {} media queries found"
+          grep -c "@media" main.css | xargs -I{} echo "ðŸ“± {} media queries found"
 
-  # ──────────────────────────────────────────────
-  # JOB 2 — Performance & SEO Audit
-  # ──────────────────────────────────────────────
+  # â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  # JOB 2 â€” Performance & SEO Audit
+  # â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   performance:
-    name: ⚡ Performance Audit
+    name: âš¡ Performance Audit
     runs-on: ubuntu-latest
     needs: validate
     if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
     steps:
-      - name: 📥 Checkout Code
+      - name: ðŸ“¥ Checkout Code
         uses: actions/checkout@v4
 
-      - name: 🚀 Setup Node.js
+      - name: ðŸš€ Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: 📦 Install serve & lighthouse
+      - name: ðŸ“¦ Install serve & lighthouse
         run: |
           npm install -g serve @lhci/cli
 
-      - name: 🌐 Start local server
+      - name: ðŸŒ Start local server
         run: serve -p 8080 . &
         
-      - name: ⏳ Wait for server
+      - name: â³ Wait for server
         run: sleep 3
 
-      - name: 💡 Run Lighthouse Audit
+      - name: ðŸ’¡ Run Lighthouse Audit
         run: |
           lhci autorun \
             --collect.url=http://localhost:8080 \
@@ -114,47 +114,47 @@ jobs:
             --assert.assertions.categories:performance=warn \
             --assert.assertions.categories:accessibility=warn \
             --assert.assertions.categories:seo=warn \
-          || echo "⚠️ Lighthouse completed with warnings"
+          || echo "âš ï¸ Lighthouse completed with warnings"
         continue-on-error: true
 
-  # ──────────────────────────────────────────────
-  # JOB 3 — Build & Minify Assets
-  # ──────────────────────────────────────────────
+  # â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  # JOB 3 â€” Build & Minify Assets
+  # â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   build:
-    name: 🏗️ Build & Optimize
+    name: ðŸ—ï¸ Build & Optimize
     runs-on: ubuntu-latest
     needs: validate
     if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
     steps:
-      - name: 📥 Checkout Code
+      - name: ðŸ“¥ Checkout Code
         uses: actions/checkout@v4
 
-      - name: 🚀 Setup Node.js
+      - name: ðŸš€ Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: 📦 Install minification tools
+      - name: ðŸ“¦ Install minification tools
         run: npm install -g clean-css-cli terser html-minifier-terser
 
-      - name: 📁 Create dist directory
+      - name: ðŸ“ Create dist directory
         run: mkdir -p dist
 
-      - name: 🎨 Minify CSS
+      - name: ðŸŽ¨ Minify CSS
         run: |
-          cleancss -o dist/styles.css styles.css
-          ORIGINAL=$(wc -c < styles.css)
-          MINIFIED=$(wc -c < dist/styles.css)
-          echo "CSS: ${ORIGINAL} bytes → ${MINIFIED} bytes ($(( (ORIGINAL - MINIFIED) * 100 / ORIGINAL ))% reduction)"
+          cleancss -o dist/main.css main.css
+          ORIGINAL=$(wc -c < main.css)
+          MINIFIED=$(wc -c < dist/main.css)
+          echo "CSS: ${ORIGINAL} bytes â†’ ${MINIFIED} bytes ($(( (ORIGINAL - MINIFIED) * 100 / ORIGINAL ))% reduction)"
 
-      - name: ⚙️ Minify JavaScript
+      - name: âš™ï¸ Minify JavaScript
         run: |
           terser script.js -o dist/script.js --compress --mangle
           ORIGINAL=$(wc -c < script.js)
           MINIFIED=$(wc -c < dist/script.js)
-          echo "JS: ${ORIGINAL} bytes → ${MINIFIED} bytes ($(( (ORIGINAL - MINIFIED) * 100 / ORIGINAL ))% reduction)"
+          echo "JS: ${ORIGINAL} bytes â†’ ${MINIFIED} bytes ($(( (ORIGINAL - MINIFIED) * 100 / ORIGINAL ))% reduction)"
 
-      - name: 📄 Process HTML
+      - name: ðŸ“„ Process HTML
         run: |
           html-minifier-terser \
             --collapse-whitespace \
@@ -166,30 +166,30 @@ jobs:
             -o dist/index.html index.html
           
           # Copy static assets
-          cp -r favicon.png profile.png manifest.json robots.txt sitemap.xml dist/ 2>/dev/null || true
+          cp -r favicon.png favicon.ico profile.png manifest.json robots.txt sitemap.xml sw.js offline.html dist/ 2>/dev/null || true
           cp *.pdf dist/ 2>/dev/null || true
 
-      - name: 📊 Build Summary
+      - name: ðŸ“Š Build Summary
         run: |
           echo "=============================="
-          echo "📦 Build Output Summary"
+          echo "ðŸ“¦ Build Output Summary"
           echo "=============================="
           ls -lh dist/
           echo ""
           echo "Total dist size: $(du -sh dist/ | cut -f1)"
 
-      - name: 💾 Upload build artifact
+      - name: ðŸ’¾ Upload build artifact
         uses: actions/upload-artifact@v4
         with:
           name: portfolio-dist
           path: dist/
           retention-days: 30
 
-  # ──────────────────────────────────────────────
-  # JOB 4 — Deploy to GitHub Pages
-  # ──────────────────────────────────────────────
+  # â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  # JOB 4 â€” Deploy to GitHub Pages
+  # â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   deploy:
-    name: 🌐 Deploy to GitHub Pages
+    name: ðŸŒ Deploy to GitHub Pages
     runs-on: ubuntu-latest
     needs: [validate, build]
     if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
@@ -198,48 +198,49 @@ jobs:
       pages: write
       id-token: write
     steps:
-      - name: 📥 Checkout Code
+      - name: ðŸ“¥ Checkout Code
         uses: actions/checkout@v4
 
-      - name: 📦 Download build artifact
+      - name: ðŸ“¦ Download build artifact
         uses: actions/download-artifact@v4
         with:
           name: portfolio-dist
           path: dist/
 
-      - name: 🚀 Deploy to GitHub Pages
+      - name: ðŸš€ Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
-          commit_message: '🚀 Deploy: ${{ github.event.head_commit.message }}'
+          commit_message: 'ðŸš€ Deploy: ${{ github.event.head_commit.message }}'
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
 
-      - name: ✅ Deployment Success
+      - name: âœ… Deployment Success
         run: |
           echo "============================================"
-          echo "✅ Portfolio successfully deployed!"
-          echo "🌐 URL: https://jakkalilokesh.github.io"
-          echo "📅 Time: $(date)"
-          echo "📝 Commit: ${{ github.sha }}"
+          echo "âœ… Portfolio successfully deployed!"
+          echo "ðŸŒ URL: https://jakkalilokesh.github.io"
+          echo "ðŸ“… Time: $(date)"
+          echo "ðŸ“ Commit: ${{ github.sha }}"
           echo "============================================"
 
-  # ──────────────────────────────────────────────
-  # JOB 5 — Notify on Failure
-  # ──────────────────────────────────────────────
+  # â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  # JOB 5 â€” Notify on Failure
+  # â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   notify-failure:
-    name: 🔔 Notify on Failure
+    name: ðŸ”” Notify on Failure
     runs-on: ubuntu-latest
     needs: [validate, build, deploy]
     if: failure()
     steps:
-      - name: ❌ Pipeline Failed
+      - name: âŒ Pipeline Failed
         run: |
           echo "=============================="
-          echo "❌ CI/CD Pipeline FAILED"
+          echo "âŒ CI/CD Pipeline FAILED"
           echo "Branch: ${{ github.ref }}"
           echo "Commit: ${{ github.sha }}"
           echo "Author: ${{ github.actor }}"
           echo "=============================="
           echo "Check the workflow logs for details."
+
