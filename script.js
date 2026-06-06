@@ -10,14 +10,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 2000);
     });
 
-    // Visitor Counter (localStorage based)
-    const visitorCountEl = document.getElementById('visitor-count');
-    if (visitorCountEl) {
-        let count = localStorage.getItem('jl_visitor_count') || 0;
-        count = parseInt(count) + 1;
-        localStorage.setItem('jl_visitor_count', count);
-        visitorCountEl.textContent = count.toLocaleString();
-    }
 
     // Auto-update copyright year
     const yearSpan = document.getElementById('current-year');
@@ -25,16 +17,15 @@ document.addEventListener('DOMContentLoaded', function () {
         yearSpan.textContent = new Date().getFullYear();
     }
 
-    // Scroll Progress Bar
+    // Scroll Progress Bar — handled by pro-upgrade feature, kept here as fallback
     const scrollProgress = document.getElementById('scroll-progress');
     window.addEventListener('scroll', function () {
         const scrollTop = window.scrollY;
         const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const scrollPercent = (scrollTop / docHeight) * 100;
-        if (scrollProgress) {
-            scrollProgress.style.width = scrollPercent + '%';
+        if (scrollProgress && docHeight > 0) {
+            scrollProgress.style.width = ((scrollTop / docHeight) * 100) + '%';
         }
-    });
+    }, { passive: true });
 
     // Theme Toggle Functionality
     const themeToggle = document.getElementById('theme-toggle');
@@ -107,33 +98,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
     setInterval(drawMatrix, 35);
 
-    const cursorDot = document.querySelector('.cursor-dot');
+    // Cursor — use the original dot+outline, hide if new trail is active
+    const cursorDot = document.querySelector('.cursor-dot:not([style])');
     const cursorOutline = document.querySelector('.cursor-outline');
 
-    let cursorX = 0;
-    let cursorY = 0;
-    let outlineX = 0;
-    let outlineY = 0;
+    let cursorX = 0, cursorY = 0, outlineX = 0, outlineY = 0;
 
-    document.addEventListener('mousemove', (e) => {
-        cursorX = e.clientX;
-        cursorY = e.clientY;
-
-        cursorDot.style.left = cursorX + 'px';
-        cursorDot.style.top = cursorY + 'px';
-    });
-
-    function animateCursor() {
-        outlineX += (cursorX - outlineX) * 0.15;
-        outlineY += (cursorY - outlineY) * 0.15;
-
-        cursorOutline.style.left = outlineX + 'px';
-        cursorOutline.style.top = outlineY + 'px';
-
-        requestAnimationFrame(animateCursor);
+    if (cursorDot && cursorOutline) {
+        document.addEventListener('mousemove', (e) => {
+            cursorX = e.clientX; cursorY = e.clientY;
+            cursorDot.style.left = cursorX + 'px';
+            cursorDot.style.top = cursorY + 'px';
+        });
+        (function animateCursor() {
+            outlineX += (cursorX - outlineX) * 0.15;
+            outlineY += (cursorY - outlineY) * 0.15;
+            cursorOutline.style.left = outlineX + 'px';
+            cursorOutline.style.top = outlineY + 'px';
+            requestAnimationFrame(animateCursor);
+        })();
     }
-
-    animateCursor();
 
     const hoverElements = document.querySelectorAll('a, button, .project-card, .cert-card, .edu-card, .skill-tag');
 
@@ -172,37 +156,49 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    const sections = document.querySelectorAll('section[id]');
-
-    function highlightNavLink() {
-        const scrollY = window.pageYOffset;
-
-        sections.forEach(section => {
-            const sectionHeight = section.offsetHeight;
-            const sectionTop = section.offsetTop - 100;
-            const sectionId = section.getAttribute('id');
-
-            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+    // ScrollSpy — IntersectionObserver for pixel-accurate nav highlighting
+    const scrollSpy = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
                 navLinks.forEach(link => {
                     link.classList.remove('active');
-                    if (link.getAttribute('href') === '#' + sectionId) {
+                    if (link.getAttribute('href') === '#' + id) {
                         link.classList.add('active');
                     }
                 });
             }
         });
-    }
+    }, { rootMargin: '-20% 0px -75% 0px', threshold: 0 });
 
-    window.addEventListener('scroll', highlightNavLink);
+    document.querySelectorAll('section[id]').forEach(sec => scrollSpy.observe(sec));
+
+    // Fallback highlightNavLink for scroll event
+    function highlightNavLink() {
+        const scrollY = window.pageYOffset;
+        document.querySelectorAll('section[id]').forEach(section => {
+            const top = section.offsetTop - 120;
+            const id = section.getAttribute('id');
+            if (scrollY >= top && scrollY < top + section.offsetHeight) {
+                navLinks.forEach(l => {
+                    l.classList.remove('active');
+                    if (l.getAttribute('href') === '#' + id) l.classList.add('active');
+                });
+            }
+        });
+    }
+    window.addEventListener('scroll', highlightNavLink, { passive: true });
 
     const typingText = document.querySelector('.typing-text');
     const titles = [
         'Cybersecurity Analyst',
         'SOC L1 Analyst',
+        'DevOps Engineer',
+        'AWS Cloud Engineer',
         'Bug Bounty Hunter',
         'VAPT Specialist',
-        'Digital Forensics Expert',
-        'Ethical Hacker'
+        'System Engineer',
+        'Digital Forensics Expert'
     ];
 
     let titleIndex = 0;
@@ -284,32 +280,161 @@ document.addEventListener('DOMContentLoaded', function () {
                 const categories = card.getAttribute('data-category').split(' ');
 
                 if (filter === 'all' || categories.includes(filter)) {
-                    card.style.display = 'block';
-                    card.style.animation = 'fadeIn 0.5s ease forwards';
+                    card.classList.remove('hidden');
                 } else {
-                    card.style.display = 'none';
+                    card.classList.add('hidden');
                 }
             });
         });
     });
 
+    /* ──────────────────────────────────────────────────────────
+       CONTACT FORM — 3-layer delivery (no page reload, no popup)
+       Layer 1: Web3Forms API (works everywhere, no confirmation)
+       Layer 2: Formsubmit hidden-iframe (no CORS, no redirect)
+       ────────────────────────────────────────────────────────── */
     const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
 
-    contactForm.addEventListener('submit', function (e) {
-        e.preventDefault();
+        // Create the hidden iframe helper ONCE (used by layer 2)
+        const iframeHelper = document.createElement('iframe');
+        iframeHelper.name = '_jl_mail_target';
+        iframeHelper.style.cssText = 'position:absolute;width:0;height:0;border:0;visibility:hidden;';
+        document.body.appendChild(iframeHelper);
 
-        const formData = new FormData(contactForm);
-        const name = formData.get('name');
-        const email = formData.get('email');
-        const subject = formData.get('subject');
-        const message = formData.get('message');
+        // Helper: fire success/fail UI
+        function setBtn(btn, state, origText) {
+            const t = btn.querySelector('.btn-text');
+            const i = btn.querySelector('.btn-icon');
+            if (state === 'loading') {
+                t.textContent = 'Sending…';
+                i.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+                btn.disabled = true; btn.style.background = '';
+            } else if (state === 'success') {
+                t.textContent = 'Message Sent! ✓';
+                i.innerHTML = '<i class="fas fa-check-circle"></i>';
+                btn.style.background = 'linear-gradient(135deg,#00ff88,#00cc6a)';
+                btn.disabled = true;
+                setTimeout(() => {
+                    t.textContent = origText;
+                    i.innerHTML = '<i class="fas fa-paper-plane"></i>';
+                    btn.style.background = ''; btn.disabled = false;
+                }, 5000);
+            } else {
+                t.textContent = origText;
+                i.innerHTML = '<i class="fas fa-paper-plane"></i>';
+                btn.style.background = ''; btn.disabled = false;
+            }
+        }
 
-        const mailtoLink = `mailto:jakkalilokesh@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
+        // Confetti burst on success
+        function fireConfetti() {
+            if (typeof confetti !== 'undefined') {
+                confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 }, colors: ['#00ff88', '#00d4ff', '#a855f7', '#ffd700'] });
+                return;
+            }
+            const canvas = document.createElement('canvas');
+            canvas.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:99999;';
+            document.body.appendChild(canvas);
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+            const particles = Array.from({ length: 120 }, () => ({
+                x: Math.random() * canvas.width, y: Math.random() * canvas.height - canvas.height,
+                r: Math.random() * 6 + 3, d: Math.random() * 60 + 20,
+                color: ['#00ff88', '#00d4ff', '#a855f7', '#ffd700', '#ff6b35'][Math.floor(Math.random() * 5)],
+                tilt: Math.floor(Math.random() * 10) - 10, tiltAngle: 0, tiltInc: Math.random() * 0.07 + 0.05
+            }));
+            let frame = 0;
+            (function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach(p => {
+                    p.tiltAngle += p.tiltInc; p.y += (Math.cos(p.d) + 1); p.x += Math.sin(frame / 40);
+                    p.tilt = Math.sin(p.tiltAngle) * 12;
+                    ctx.beginPath(); ctx.lineWidth = p.r;
+                    ctx.strokeStyle = p.color;
+                    ctx.moveTo(p.x + p.tilt + p.r / 2, p.y); ctx.lineTo(p.x + p.tilt, p.y + p.tilt + p.r / 2);
+                    ctx.stroke();
+                });
+                frame++;
+                if (frame < 200) requestAnimationFrame(draw); else canvas.remove();
+            })();
+        }
 
-        window.location.href = mailtoLink;
+        contactForm.addEventListener('submit', async function (e) {
+            e.preventDefault();
 
-        showNotification('Opening email client...', 'success');
-    });
+            const name = (document.getElementById('name')?.value || '').trim();
+            const email = (document.getElementById('email')?.value || '').trim();
+            const subject = (document.getElementById('subject')?.value || '').trim();
+            const message = (document.getElementById('message')?.value || '').trim();
+
+            if (!name || !email || !subject || !message) {
+                showNotification('⚠️ Please fill in all fields.', 'error'); return;
+            }
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                showNotification('⚠️ Enter a valid email address.', 'error'); return;
+            }
+
+            const btn = contactForm.querySelector('button[type="submit"]');
+            const origText = btn.querySelector('.btn-text').textContent;
+            setBtn(btn, 'loading', origText);
+
+            let sent = false;
+
+            // ── LAYER 1: Web3Forms (free, no confirmation, works from localhost) ──
+            try {
+                const fd = new FormData();
+                fd.append('access_key', '054bec0d-965f-4ece-b421-7edc0e1ccad5'); // Web3Forms public key
+                fd.append('name', name);
+                fd.append('email', email);
+                fd.append('subject', `[Portfolio] ${subject}`);
+                fd.append('message', message);
+                fd.append('from_name', 'Portfolio Contact Form');
+
+                const res = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST', body: fd
+                });
+                const data = await res.json();
+                if (data.success) sent = true;
+            } catch (_) { /* try next */ }
+
+            // ── LAYER 2: Formsubmit via hidden iframe (no CORS, no page redirect) ──
+            if (!sent) {
+                try {
+                    const hiddenForm = document.createElement('form');
+                    hiddenForm.action = 'https://formsubmit.co/jakkalilokesh@gmail.com';
+                    hiddenForm.method = 'POST';
+                    hiddenForm.target = '_jl_mail_target';
+                    hiddenForm.style.display = 'none';
+                    [
+                        ['name', name], ['email', email], ['message', message],
+                        ['_subject', `[Portfolio] ${subject}`],
+                        ['_captcha', 'false'], ['_template', 'table'],
+                        ['_next', 'about:blank']
+                    ].forEach(([k, v]) => {
+                        const inp = document.createElement('input');
+                        inp.type = 'hidden'; inp.name = k; inp.value = v;
+                        hiddenForm.appendChild(inp);
+                    });
+                    document.body.appendChild(hiddenForm);
+                    hiddenForm.submit();
+                    setTimeout(() => hiddenForm.remove(), 500);
+                    sent = true; // Assume sent (iframe, no response available)
+                } catch (_) { /* final fallback below */ }
+            }
+
+            if (sent) {
+                setBtn(btn, 'success', origText);
+                showNotification('✅ Message sent! I\'ll reply within 24 hours.', 'success');
+                fireConfetti();
+                contactForm.reset();
+            } else {
+                setBtn(btn, 'reset', origText);
+                showNotification('❌ Network error. Email directly: jakkalilokesh@gmail.com', 'error');
+            }
+        });
+    }
+
 
     function showNotification(message, type = 'info') {
         const notification = document.createElement('div');
@@ -470,7 +595,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     function navigateSection(direction) {
-        const sectionIds = ['home', 'about', 'experience', 'projects', 'certifications', 'education', 'contact'];
+        const sectionIds = ['home', 'about', 'experience', 'projects', 'certifications', 'achievements', 'education', 'contact'];
         const currentSection = getCurrentSection();
         const currentIndex = sectionIds.indexOf(currentSection);
         let nextIndex = currentIndex + direction;
@@ -483,7 +608,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function getCurrentSection() {
-        const sections = ['home', 'about', 'experience', 'projects', 'certifications', 'education', 'contact'];
+        const sections = ['home', 'about', 'experience', 'projects', 'certifications', 'achievements', 'education', 'contact'];
         const scrollPosition = window.scrollY + window.innerHeight / 2;
 
         for (let i = sections.length - 1; i >= 0; i--) {
@@ -582,6 +707,7 @@ console.log('%c   → hack()    - Watch a hacking simulation', 'color: #8892b0;'
 console.log('%c   → skills()  - See my tech stack', 'color: #8892b0;');
 console.log('%c   → contact() - Get my contact info', 'color: #8892b0;');
 console.log('%c   → matrix()  - Matrix effect', 'color: #8892b0;');
+console.log('%c   → devops()   - See my DevOps/Cloud stack', 'color: #8892b0;');
 console.log('');
 
 // ============================================
@@ -648,6 +774,12 @@ window.skills = function () {
     console.log('%c', 'padding: 2px;');
     console.log('%c🟣 CODE', 'color: #9b59b6; font-weight: bold;');
     console.log('%c   Python • Bash • PowerShell • JavaScript • SQL', 'color: #8892b0;');
+    console.log('%c', 'padding: 2px;');
+    console.log('%c☁️ DEVOPS & CLOUD', 'color: #00d4ff; font-weight: bold;');
+    console.log('%c   AWS (EC2, Lambda, EKS, S3, VPC) • Docker • Kubernetes • Terraform • Ansible • Jenkins', 'color: #8892b0;');
+    console.log('%c', 'padding: 2px;');
+    console.log('%c🔵 MONITORING', 'color: #00ff88; font-weight: bold;');
+    console.log('%c   CloudWatch • Grafana • Prometheus', 'color: #8892b0;');
     return '📊 Skills displayed above!';
 };
 
@@ -660,8 +792,26 @@ window.contact = function () {
     console.log('%c🐙 GitHub: github.com/jakkalilokesh', 'color: #8892b0;');
     console.log('%c🎯 TryHackMe: tryhackme.com/p/jakkalilokesh', 'color: #00ff88;');
     console.log('%c', 'padding: 3px;');
-    console.log('%c💼 Open to: SOC Analyst, Security Analyst, VAPT roles', 'color: #ffd700;');
+    console.log('%c💼 Open to: SOC Analyst, DevOps Engineer, Cloud & Security roles', 'color: #ffd700;');
     return '📞 Reach out anytime!';
+};
+
+window.devops = function () {
+    console.log('%c', 'padding: 5px;');
+    console.log('%c☁️ DEVOPS & CLOUD ARSENAL:', 'color: #00d4ff; font-size: 16px; font-weight: bold;');
+    console.log('%c', 'padding: 3px;');
+    console.log('%c🔄 CI/CD', 'color: #00ff88; font-weight: bold;');
+    console.log('%c   Jenkins • GitHub Actions • Docker • Kubernetes', 'color: #8892b0;');
+    console.log('%c', 'padding: 2px;');
+    console.log('%c🏗️ IaC', 'color: #ffd700; font-weight: bold;');
+    console.log('%c   Terraform • Ansible', 'color: #8892b0;');
+    console.log('%c', 'padding: 2px;');
+    console.log('%c☁️ CLOUD', 'color: #00d4ff; font-weight: bold;');
+    console.log('%c   AWS EC2, EKS, Lambda, S3, VPC, CloudWatch, IAM, DynamoDB', 'color: #8892b0;');
+    console.log('%c', 'padding: 2px;');
+    console.log('%c📊 MONITORING', 'color: #9b59b6; font-weight: bold;');
+    console.log('%c   Grafana • Prometheus • CloudWatch', 'color: #8892b0;');
+    return '🚀 DevOps stack displayed!';
 };
 
 // Matrix effect in console
@@ -689,15 +839,16 @@ const hackerMessages = [
     ['%c💡 Pro tip: Type skills() to see what I can do!', 'color: #ffd700; font-size: 14px; font-weight: bold;'],
 ];
 
-// Show random message every 8 seconds in console
-setInterval(() => {
+// Show one fun console message (no repeating loop)
+setTimeout(() => {
     const [msg, style] = hackerMessages[Math.floor(Math.random() * hackerMessages.length)];
     console.log(msg, style);
-}, 8000);
+}, 3000);
 
-// Disable right-click with fun message
+
+
+// Right-click: allow normal behavior but log fun message
 document.addEventListener('contextmenu', function (e) {
-    e.preventDefault();
 
     // Show custom alert
     const alertDiv = document.createElement('div');
@@ -742,7 +893,7 @@ document.addEventListener('contextmenu', function (e) {
     setTimeout(() => alertDiv.remove(), 2000);
 });
 
-// Detect F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+// Detect F12, Ctrl+Shift+I, Ctrl+Shift+J
 document.addEventListener('keydown', function (e) {
     // F12 - just log, don't block
     if (e.key === 'F12') {
@@ -752,12 +903,6 @@ document.addEventListener('keydown', function (e) {
     // Ctrl+Shift+I or Ctrl+Shift+J - just log, don't block
     if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j')) {
         console.log('%c🕵️ Ctrl+Shift+I detected! Welcome, fellow developer!', 'color: #00ff88; font-size: 14px;');
-    }
-
-    // Ctrl+U (View Source) - block this one
-    if (e.ctrlKey && (e.key === 'U' || e.key === 'u')) {
-        e.preventDefault();
-        console.log('%c📜 View Source blocked! The code is too beautiful to share... jk it\'s on GitHub! 😂', 'color: #ff4757; font-size: 14px;');
     }
 });
 
@@ -806,3 +951,337 @@ document.addEventListener('keydown', function (e) {
 });
 
 console.log('%c🎯 Hiring? Let\'s connect! → jakkalilokesh@gmail.com', 'color: #00ff88; font-size: 16px; font-weight: bold; background: #0a192f; padding: 10px 20px; border-radius: 5px;');
+
+// Resume dropdown toggle
+window.toggleResumeMenu = function (e) {
+    e.preventDefault();
+    const menu = document.getElementById('resume-menu');
+    menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+};
+document.addEventListener('click', function (e) {
+    if (!e.target.closest('.resume-dropdown')) {
+        const menu = document.getElementById('resume-menu');
+        if (menu) menu.style.display = 'none';
+    }
+});
+
+// ═══════════════════════════════════════════════════════════
+// FEATURE 1 — Live Digital Clock in Navbar
+// ═══════════════════════════════════════════════════════════
+(function initLiveClock() {
+    const el = document.getElementById('live-clock');
+    if (!el) return;
+    const tick = () => {
+        const now = new Date();
+        el.textContent = now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
+    };
+    tick(); setInterval(tick, 1000);
+})();
+
+// ═══════════════════════════════════════════════════════════
+// FEATURE 2 — Scroll Progress Bar
+// ═══════════════════════════════════════════════════════════
+(function initScrollProgress() {
+    const bar = document.getElementById('scroll-progress');
+    if (!bar) return;
+    window.addEventListener('scroll', () => {
+        const pct = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+        bar.style.width = Math.min(pct, 100) + '%';
+    }, { passive: true });
+})();
+
+// ═══════════════════════════════════════════════════════════
+// FEATURE 3 — 3D Card Tilt on Mouse Move
+// ═══════════════════════════════════════════════════════════
+(function initCardTilt() {
+    const cards = document.querySelectorAll('.project-card, .cert-card, .timeline-content, .achievement-card, .arsenal-category');
+    cards.forEach(card => {
+        card.addEventListener('mousemove', e => {
+            const r = card.getBoundingClientRect();
+            const rx = -((e.clientY - r.top - r.height / 2) / (r.height / 2)) * 8;
+            const ry = ((e.clientX - r.left - r.width / 2) / (r.width / 2)) * 10;
+            card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) scale3d(1.025,1.025,1.025)`;
+            card.style.boxShadow = `${-ry * 2}px ${rx * 2}px 30px rgba(var(--primary-rgb,0,255,136),0.25)`;
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(900px) rotateX(0) rotateY(0) scale3d(1,1,1)';
+            card.style.boxShadow = '';
+        });
+    });
+})();
+
+// ═══════════════════════════════════════════════════════════
+// FEATURE 4 — Animated Skill Bars
+// ═══════════════════════════════════════════════════════════
+(function initSkillBars() {
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach(en => {
+            if (!en.isIntersecting) return;
+            en.target.querySelectorAll('.skill-fill').forEach(fill => {
+                const pct = fill.dataset.pct || '0';
+                fill.style.width = '0%';
+                requestAnimationFrame(() => {
+                    fill.style.transition = 'width 1.5s cubic-bezier(0.4,0,0.2,1)';
+                    fill.style.width = pct + '%';
+                });
+            });
+            obs.unobserve(en.target);
+        });
+    }, { threshold: 0.25 });
+    document.querySelectorAll('.skills-bars-section').forEach(el => obs.observe(el));
+})();
+
+// ═══════════════════════════════════════════════════════════
+// FEATURE 5 — Copy to Clipboard
+// ═══════════════════════════════════════════════════════════
+(function initCopyButtons() {
+    document.querySelectorAll('[data-copy]').forEach(el => {
+        el.title = 'Click to copy'; el.style.cursor = 'pointer';
+        el.addEventListener('click', () => {
+            navigator.clipboard.writeText(el.dataset.copy).then(() => {
+                const orig = el.textContent;
+                el.textContent = '✅ Copied!'; el.style.color = 'var(--primary)';
+                setTimeout(() => { el.textContent = orig; el.style.color = ''; }, 2000);
+                showNotification('Copied to clipboard!', 'success');
+            });
+        });
+    });
+})();
+
+// ═══════════════════════════════════════════════════════════
+// FEATURE 6 — Custom Cursor Trail
+// ═══════════════════════════════════════════════════════════
+(function initCursorTrail() {
+    if (!window.matchMedia('(pointer:fine)').matches) return;
+    const N = 8; const dots = [];
+    for (let i = 0; i < N; i++) {
+        const d = document.createElement('div');
+        const s = (10 - i);
+        d.style.cssText = `position:fixed;width:${s}px;height:${s}px;border-radius:50%;pointer-events:none;z-index:99999;background:rgba(0,255,136,${0.7 - i * 0.07});opacity:0;transform:translate(-50%,-50%);`;
+        document.body.appendChild(d);
+        dots.push({ el: d, x: 0, y: 0 });
+    }
+    let mx = 0, my = 0;
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+    (function loop() {
+        let px = mx, py = my;
+        dots.forEach((dot, i) => {
+            const lag = 0.55 - i * 0.05;
+            dot.x += (px - dot.x) * lag;
+            dot.y += (py - dot.y) * lag;
+            dot.el.style.left = dot.x + 'px';
+            dot.el.style.top = dot.y + 'px';
+            dot.el.style.opacity = '1';
+            px = dot.x; py = dot.y;
+        });
+        requestAnimationFrame(loop);
+    })();
+})();
+
+// ═══════════════════════════════════════════════════════════
+// FEATURE 7 — Magnetic Buttons
+// ═══════════════════════════════════════════════════════════
+(function initMagneticBtns() {
+    document.querySelectorAll('.btn-primary, .btn-secondary, .btn-outline, .filter-btn').forEach(btn => {
+        btn.addEventListener('mousemove', e => {
+            const r = btn.getBoundingClientRect();
+            const dx = (e.clientX - r.left - r.width / 2) * 0.3;
+            const dy = (e.clientY - r.top - r.height / 2) * 0.3;
+            btn.style.transform = `translate(${dx}px,${dy}px) scale(1.06)`;
+        });
+        btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+    });
+})();
+
+// ═══════════════════════════════════════════════════════════
+// FEATURE 8 — Theme Accent Color Switcher
+// ═══════════════════════════════════════════════════════════
+(function initThemeSwitcher() {
+    const sw = document.getElementById('theme-switcher');
+    if (!sw) return;
+    const themes = [
+        { name: 'Matrix Green', p: '#00ff88', s: '#64ffda', rgb: '0,255,136' },
+        { name: 'Cyber Blue', p: '#00d4ff', s: '#7dd3fc', rgb: '0,212,255' },
+        { name: 'Neon Purple', p: '#a855f7', s: '#c084fc', rgb: '168,85,247' },
+        { name: 'Solar Orange', p: '#ff6b35', s: '#ff9a5c', rgb: '255,107,53' },
+        { name: 'Hot Pink', p: '#ff007f', s: '#ff5aaa', rgb: '255,0,127' },
+    ];
+    let idx = parseInt(localStorage.getItem('jl_accent') || '0');
+    const apply = i => {
+        const t = themes[i];
+        const r = document.documentElement;
+        r.style.setProperty('--primary', t.p);
+        r.style.setProperty('--secondary', t.s);
+        r.style.setProperty('--primary-rgb', t.rgb);
+        sw.style.background = t.p;
+        sw.title = `Theme: ${t.name}`;
+        localStorage.setItem('jl_accent', i);
+    };
+    apply(idx);
+    sw.addEventListener('click', () => { idx = (idx + 1) % themes.length; apply(idx); showNotification('🎨 Theme: ' + themes[idx].name, 'success'); });
+})();
+
+// ═══════════════════════════════════════════════════════════
+// FEATURE 9 — Floating Tech Icons in Hero
+// ═══════════════════════════════════════════════════════════
+(function initHeroParticles() {
+    const hero = document.querySelector('.hero-section');
+    if (!hero) return;
+    const icons = ['⚙️', '🐳', '☁️', '🔐', '🛡️', '🐧', '🔗', '📡', '🌐', '🔒', '⚡', '🚀'];
+    icons.forEach((ic, i) => {
+        const d = document.createElement('div');
+        d.className = 'hero-float-icon';
+        d.textContent = ic;
+        d.style.cssText = `position:absolute;font-size:${18 + Math.random() * 18}px;left:${5 + Math.random() * 88}%;top:${8 + Math.random() * 76}%;opacity:${0.06 + Math.random() * 0.1};animation:floatIcon ${7 + Math.random() * 7}s ease-in-out infinite ${Math.random() * 5}s;pointer-events:none;user-select:none;z-index:0;filter:blur(0.4px);`;
+        hero.appendChild(d);
+    });
+})();
+
+// ═══════════════════════════════════════════════════════════
+// FEATURE 10 — Open to Work Banner Dismiss
+// ═══════════════════════════════════════════════════════════
+(function initBanner() {
+    const btn = document.getElementById('banner-close');
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+        const banner = document.getElementById('otw-banner');
+        if (banner) { banner.style.opacity = '0'; banner.style.transform = 'translateY(-100%)'; setTimeout(() => banner.remove(), 400); }
+    });
+})();
+
+// ═══════════════════════════════════════════════════════════
+// FEATURE 11 — Typing cursor blink on hero
+// ═══════════════════════════════════════════════════════════
+(function patchShowNotification() {
+    // Patch showNotification to handle 'error' type with red color
+    const _orig = window.showNotification;
+    window.showNotification = function (message, type = 'info') {
+        if (type === 'error') {
+            const n = document.createElement('div');
+            n.style.cssText = `position:fixed;top:100px;right:30px;background:rgba(255,71,87,0.95);color:#fff;padding:15px 25px;border-radius:10px;z-index:99999;display:flex;align-items:center;gap:10px;font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:600;box-shadow:0 5px 30px rgba(255,71,87,0.5);animation:slideInRight 0.4s ease;`;
+            n.innerHTML = `<i class="fas fa-exclamation-circle"></i><span>${message}</span>`;
+            document.body.appendChild(n);
+            setTimeout(() => { n.style.opacity = '0'; setTimeout(() => n.remove(), 400); }, 5000);
+        } else {
+            _orig && _orig(message, type);
+        }
+    };
+})();
+
+// ═══════════════════════════════════════════════════════════
+// FEATURE 12 — QR Modal (share portfolio)
+// ═══════════════════════════════════════════════════════════
+(function initQRModal() {
+    const modal = document.getElementById('qr-modal');
+    const closeBtn = document.getElementById('qr-modal-close');
+    const urlEl = document.getElementById('qr-url');
+    const shareBtn = document.getElementById('qr-share-btn');
+    if (!modal) return;
+
+    const portfolioURL = 'https://jakkalilokesh.github.io/my_portfolio/';
+
+    // Close handlers
+    closeBtn?.addEventListener('click', () => modal.classList.remove('open'));
+    modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('open'); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') modal.classList.remove('open'); });
+
+    // Copy URL on click
+    urlEl?.addEventListener('click', () => {
+        navigator.clipboard.writeText(portfolioURL).then(() => {
+            const orig = urlEl.textContent;
+            urlEl.textContent = '✅ Copied!'; urlEl.style.color = '#00ff88';
+            setTimeout(() => { urlEl.textContent = orig; urlEl.style.color = ''; }, 2000);
+        });
+    });
+
+    // Web Share API or fallback
+    shareBtn?.addEventListener('click', async () => {
+        if (navigator.share) {
+            try {
+                await navigator.share({ title: 'Jakkali Lokesh — Portfolio', text: '🚀 Check out my Cybersecurity & DevOps portfolio!', url: portfolioURL });
+            } catch (e) { /* user cancelled */ }
+        } else {
+            navigator.clipboard.writeText(portfolioURL);
+            showNotification('🔗 Portfolio link copied to clipboard!', 'success');
+        }
+    });
+})();
+
+// ═══════════════════════════════════════════════════════════
+// FEATURE 13 — Live Visitor Counter (countapi.xyz)
+// ═══════════════════════════════════════════════════════════
+(function initVisitorCounter() {
+    const el = document.getElementById('visitor-count');
+    if (!el) return;
+    fetch('https://api.countapi.xyz/hit/jakkalilokesh.portfolio/visits')
+        .then(r => r.json())
+        .then(d => {
+            if (d && d.value) {
+                let count = 0;
+                const target = d.value;
+                const step = Math.ceil(target / 40);
+                const timer = setInterval(() => {
+                    count += step;
+                    if (count >= target) { count = target; clearInterval(timer); }
+                    el.textContent = count.toLocaleString('en-IN');
+                }, 40);
+            }
+        })
+        .catch(() => { el.textContent = '1K+'; });
+})();
+
+// ═══════════════════════════════════════════════════════════
+// FEATURE 14 — Section-level Reading Progress Ring
+// ═══════════════════════════════════════════════════════════
+(function initReadingRing() {
+    const ring = document.createElement('div');
+    ring.id = 'reading-ring';
+    ring.style.cssText = 'position:fixed;bottom:70px;right:20px;width:40px;height:40px;z-index:9990;pointer-events:none;';
+    ring.innerHTML = `<svg viewBox="0 0 36 36" style="transform:rotate(-90deg);width:40px;height:40px;">
+        <circle cx="18" cy="18" r="15.9" fill="none" stroke="rgba(0,255,136,0.1)" stroke-width="2"/>
+        <circle id="reading-ring-fill" cx="18" cy="18" r="15.9" fill="none" stroke="#00ff88"
+            stroke-width="2.5" stroke-dasharray="0 100" stroke-linecap="round"
+            style="transition:stroke-dasharray 0.2s ease;filter:drop-shadow(0 0 4px #00ff88);"/>
+    </svg>`;
+    document.body.appendChild(ring);
+    const fill = document.getElementById('reading-ring-fill');
+    window.addEventListener('scroll', () => {
+        const pct = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+        if (fill) fill.setAttribute('stroke-dasharray', `${Math.min(pct, 100).toFixed(1)} 100`);
+    }, { passive: true });
+})();
+
+// ═══════════════════════════════════════════════════════════
+// FEATURE 15 — Easter Egg: Konami Code → matrix rain burst
+// ═══════════════════════════════════════════════════════════
+(function initKonami() {
+    const code = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
+    let pos = 0;
+    document.addEventListener('keydown', e => {
+        pos = (e.keyCode === code[pos]) ? pos + 1 : 0;
+        if (pos === code.length) {
+            pos = 0;
+            showNotification('🎮 KONAMI CODE! Matrix Mode Activated!', 'success');
+            document.body.style.filter = 'hue-rotate(90deg) contrast(1.2)';
+            setTimeout(() => { document.body.style.filter = ''; }, 3000);
+        }
+    });
+})();
+
+// ═══════════════════════════════════════════════════════════
+// SERVICE WORKER — PWA Registration
+// ═══════════════════════════════════════════════════════════
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/my_portfolio/sw.js')
+            .then((reg) => {
+                console.log('[SW] Registered, scope:', reg.scope);
+            })
+            .catch((err) => {
+                // Try root path for local development
+                navigator.serviceWorker.register('/sw.js')
+                    .then((reg) => console.log('[SW] Registered (local):', reg.scope))
+                    .catch(() => {}); // Silent fail if no SW support
+            });
+    });
+}

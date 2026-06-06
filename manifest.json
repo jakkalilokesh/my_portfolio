@@ -1,23 +1,30 @@
-{
-    "name": "Jakkali Lokesh Portfolio",
+﻿{
+    "name": "Jakkali Lokesh | Cybersecurity & DevOps Portfolio",
     "short_name": "JL Portfolio",
-    "description": "Cybersecurity Analyst Portfolio - SOC L1, Bug Bounty Hunter, VAPT Specialist",
-    "start_url": "/",
+    "description": "Cybersecurity Analyst & DevOps Engineer — SOC Analysis, VAPT, AWS Cloud, CI/CD Pipelines",
+    "start_url": "/my_portfolio/",
+    "scope": "/my_portfolio/",
     "display": "standalone",
     "background_color": "#020c1b",
     "theme_color": "#00ff88",
     "orientation": "portrait-primary",
+    "lang": "en",
     "icons": [
+        { "src": "favicon.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+        { "src": "favicon.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+    ],
+    "categories": ["portfolio", "cybersecurity", "professional"],
+    "screenshots": [],
+    "shortcuts": [
         {
-            "src": "favicon.png",
-            "sizes": "192x192",
-            "type": "image/png"
+            "name": "View Projects",
+            "url": "/my_portfolio/#projects",
+            "description": "See my cybersecurity and DevOps projects"
         },
         {
-            "src": "favicon.png",
-            "sizes": "512x512",
-            "type": "image/png"
+            "name": "Contact Me",
+            "url": "/my_portfolio/#contact",
+            "description": "Get in touch with Jakkali Lokesh"
         }
-    ],
-    "categories": ["portfolio", "cybersecurity", "professional"]
+    ]
 }

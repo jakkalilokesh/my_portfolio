@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Offline | Jakkali Lokesh Portfolio</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #020c1b;
+      color: #ccd6f6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 20px;
+    }
+    .container { max-width: 480px; }
+    .icon { font-size: 64px; margin-bottom: 24px; }
+    h1 { font-size: 2rem; color: #00ff88; margin-bottom: 12px; font-family: monospace; }
+    p { color: #8892b0; line-height: 1.6; margin-bottom: 24px; }
+    .badge {
+      display: inline-block;
+      background: rgba(0,255,136,0.1);
+      border: 1px solid rgba(0,255,136,0.3);
+      color: #00ff88;
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-family: monospace;
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+    button {
+      background: linear-gradient(135deg, #00ff88, #00d4ff);
+      border: none;
+      color: #020c1b;
+      font-weight: 700;
+      padding: 12px 28px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 15px;
+      transition: transform 0.2s;
+    }
+    button:hover { transform: translateY(-2px); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="icon">📡</div>
+    <h1>// You're Offline</h1>
+    <div class="badge">CONNECTION LOST</div>
+    <p>It seems you've lost your internet connection. Please check your network and try again.</p>
+    <button onclick="window.location.reload()">↻ Retry Connection</button>
+  </div>
+</body>
+</html>

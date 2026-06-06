@@ -1,17 +1,15 @@
-# Robots.txt for Jakkali Lokesh Portfolio
-# https://jakkalilokesh.github.io/
+﻿# robots.txt — Jakkali Lokesh Portfolio
+# https://jakkalilokesh.github.io/my_portfolio/
 
 User-agent: *
 Allow: /
 
-# Sitemap location
-Sitemap: https://jakkalilokesh.github.io/sitemap.xml
+# Sitemap
+Sitemap: https://jakkalilokesh.github.io/my_portfolio/sitemap.xml
 
-# Main pages
-Allow: /index.html
-
-# Assets
-Allow: /styles.css
-Allow: /script.js
-Allow: /profile.png
-Allow: /favicon.png
+# Allow all assets
+Allow: /my_portfolio/index.html
+Allow: /my_portfolio/main.css
+Allow: /my_portfolio/script.js
+Allow: /my_portfolio/profile.png
+Allow: /my_portfolio/favicon.png

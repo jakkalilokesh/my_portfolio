@@ -1,48 +1,146 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Jakkali Lokesh - Cybersecurity Analyst, SOC L1, SIEM, Digital Forensics, VAPT, Bug Bounty Hunter. Portfolio showcasing security expertise and projects.">
-    <meta name="keywords"
-        content="Cybersecurity, SOC Analyst, Bug Bounty, VAPT, Penetration Testing, Digital Forensics, SIEM">
+    <meta name="description" content="Jakkali Lokesh - Cybersecurity Analyst, SOC L1, DevOps Engineer, AWS Cloud Engineer, SIEM, Digital Forensics, VAPT, Bug Bounty Hunter. Portfolio showcasing security and DevOps expertise.">
+    <meta name="keywords" content="Cybersecurity, SOC Analyst, Bug Bounty, VAPT, Penetration Testing, Digital Forensics, SIEM, DevOps, AWS, Kubernetes, Docker, Terraform, Ansible, Jenkins, CI/CD, Cloud Engineering">
     <meta name="author" content="Jakkali Lokesh">
 
-    <meta property="og:title" content="Jakkali Lokesh | Cybersecurity Analyst Portfolio">
-    <meta property="og:description"
-        content="Passionate Cybersecurity Analyst specializing in SOC Analysis, Threat Detection, VAPT, and Digital Forensics. View my projects and experience.">
-    <meta property="og:image" content="profile.png">
+    <meta property="og:title" content="Jakkali Lokesh | Cybersecurity &amp; DevOps Engineer Portfolio">
+    <meta property="og:description" content="Passionate Cybersecurity Analyst specializing in SOC Analysis, Threat Detection, VAPT, and Digital Forensics. View my projects and experience.">
+    <meta property="og:image" content="https://jakkalilokesh.github.io/my_portfolio/profile.png">
+    <meta property="og:url" content="https://jakkalilokesh.github.io/my_portfolio/">
     <meta property="og:type" content="website">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Jakkali Lokesh | Cybersecurity Analyst">
     <meta name="twitter:description" content="Cybersecurity Analyst | SOC L1 | Bug Bounty Hunter | VAPT Specialist">
-    <meta name="twitter:image" content="profile.png">
+    <meta name="twitter:image" content="https://jakkalilokesh.github.io/my_portfolio/profile.png">
 
-    <title>Jakkali Lokesh | Cybersecurity Analyst Portfolio</title>
+    <title>Jakkali Lokesh | Cybersecurity &amp; DevOps Engineer Portfolio</title>
+
     <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="shortcut icon" href="favicon.ico">
     <link rel="apple-touch-icon" href="favicon.png">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#00ff88">
 
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+    <!-- AOS Animations -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="styles.css">
+    <!-- Main Stylesheet (all styles merged) -->
+    <link rel="stylesheet" href="main.css">
+
+    <!-- Resume dropdown — must be available before script.js loads -->
+    <script>
+        function toggleResumeMenu(e) {
+            if (e) { e.preventDefault(); e.stopPropagation(); }
+            var menu = document.getElementById('resume-menu');
+            if (!menu) return;
+            menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+        }
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest || !e.target.closest('.resume-dropdown')) {
+                var menu = document.getElementById('resume-menu');
+                if (menu) menu.style.display = 'none';
+            }
+        });
+    </script>
+    <!-- SEO: Canonical URL -->
+    <link rel="canonical" href="https://jakkalilokesh.github.io/my_portfolio/">
+
+    <!-- SEO: JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Jakkali Lokesh",
+      "url": "https://jakkalilokesh.github.io/my_portfolio/",
+      "image": "https://jakkalilokesh.github.io/my_portfolio/profile.png",
+      "jobTitle": "Cybersecurity Analyst & DevOps Engineer",
+      "description": "Cybersecurity Analyst specializing in SOC Analysis, SIEM, Threat Detection, VAPT, Bug Bounty, and DevOps engineering with AWS Cloud expertise.",
+      "email": "jakkalilokesh@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Bangalore",
+        "addressCountry": "IN"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/jakkali-lokesh-a1a809211/",
+        "https://github.com/jakkalilokesh",
+        "https://tryhackme.com/p/jakkalilokesh"
+      ],
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "B.Tech Information Technology"
+      },
+      "knowsAbout": [
+        "Cybersecurity", "SOC Analysis", "SIEM", "Threat Detection",
+        "Incident Response", "VAPT", "Penetration Testing", "Bug Bounty",
+        "Digital Forensics", "Malware Analysis", "MITRE ATT&CK",
+        "DevOps", "AWS", "Docker", "Kubernetes", "Terraform",
+        "Ansible", "Jenkins", "CI/CD", "Python", "Bash"
+      ],
+      "hasCredential": [
+        { "@type": "EducationalOccupationalCredential", "name": "AWS Cloud Practitioner" },
+        { "@type": "EducationalOccupationalCredential", "name": "CompTIA Security+" },
+        { "@type": "EducationalOccupationalCredential", "name": "Google Cybersecurity Certificate" }
+      ]
+    }
+    </script>
+
+    <!-- SEO: WebSite Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Jakkali Lokesh Portfolio",
+      "url": "https://jakkalilokesh.github.io/my_portfolio/",
+      "description": "Professional portfolio of Jakkali Lokesh — Cybersecurity Analyst & DevOps Engineer"
+    }
+    </script>
 </head>
 
 <body>
 
-    <div id="preloader">
+    <!-- Open To Work Banner -->
+    <div id="otw-banner" style="background:linear-gradient(90deg,#003d1f,#005c2e,#003d1f);border-bottom:1px solid rgba(0,255,136,0.4);padding:8px 20px;display:flex;align-items:center;justify-content:center;gap:12px;position:relative;z-index:9999;transition:all 0.4s ease;">
+       <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#00ff88;box-shadow:0 0 8px #00ff88;animation:pulse 1.5s infinite;"></span>
+       <span style="font-family:'Rajdhani',sans-serif;font-size:13px;color:#ccd6f6;letter-spacing:1px;">🚀 <strong style="color:#00ff88;">Actively Open to Work</strong> — SOC Analyst, DevOps Engineer &amp; Cloud roles. Available immediately.</span>
+       <a href="#contact" style="margin-left:10px;background:rgba(0,255,136,0.15);border:1px solid rgba(0,255,136,0.5);color:#00ff88;padding:3px 14px;border-radius:20px;font-family:'Rajdhani',sans-serif;font-size:12px;font-weight:700;text-decoration:none;letter-spacing:1px;">HIRE ME</a>
+       <button id="banner-close" style="position:absolute;right:16px;background:none;border:none;color:#8892b0;cursor:pointer;font-size:16px;line-height:1;" aria-label="Close banner">&times;</button>
+    </div>
+
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress"></div>
+
+    <!-- Floating WhatsApp Button -->
+    <a id="whatsapp-float" href="https://wa.me/917075734356" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" style="position:fixed;bottom:130px;right:20px;width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#25D366,#128C7E);display:flex;align-items:center;justify-content:center;color:white;font-size:22px;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,0.45);z-index:9980;transition:transform 0.3s,box-shadow 0.3s;" onmouseover="this.style.transform='scale(1.12)'" onmouseout="this.style.transform='scale(1)'">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- QR Code Modal -->
+    <div id="qr-modal" class="qr-modal" role="dialog" aria-modal="true" aria-label="Share Portfolio QR">
+      <div class="qr-modal-content">
+        <button class="qr-modal-close" id="qr-modal-close" aria-label="Close">&times;</button>
+        <div class="qr-modal-title"><i class="fas fa-qrcode"></i> &nbsp;SHARE PORTFOLIO</div>
+        <div class="qr-modal-subtitle">Scan QR or share the link</div>
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://jakkalilokesh.github.io/my_portfolio/&color=00ff88&bgcolor=0a192f" alt="Portfolio QR Code" loading="lazy">
+        <span class="qr-modal-url" id="qr-url" title="Click to copy">https://jakkalilokesh.github.io/my_portfolio/</span>
+        <button class="qr-share-btn" id="qr-share-btn"><i class="fas fa-share-alt"></i> Share Portfolio</button>
+      </div>
+    </div>
+<div id="preloader">
         <video class="loader-video" autoplay muted loop playsinline>
             <source src="https://videos.pexels.com/video-files/3129671/3129671-sd_640_360_30fps.mp4" type="video/mp4">
         </video>
@@ -111,99 +209,152 @@
                 <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
 
-            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+            <!-- Live Clock & Theme Accent Switcher -->
+            <div style="display:flex;align-items:center;gap:10px;">
+              <div id="live-clock" style="font-family:'Share Tech Mono',monospace;font-size:12px;color:rgba(0,255,136,0.7);letter-spacing:2px;border:1px solid rgba(0,255,136,0.2);padding:4px 10px;border-radius:4px;background:rgba(0,255,136,0.05);">00:00:00</div>
+              <button id="theme-switcher" aria-label="Switch accent color" style="width:28px;height:28px;border-radius:50%;border:2px solid rgba(255,255,255,0.2);background:#00ff88;cursor:pointer;box-shadow:0 0 10px currentColor;transition:all 0.3s;" title="Switch color theme"></button>
+              <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
                 <i class="fas fa-moon" id="theme-icon"></i>
-            </button>
+              </button>
+            </div>
         </div>
     </nav>
 
     <main>
 
-        <section id="home" class="hero-section">
-            <div class="hero-content">
-                <div class="hero-glitch-container">
+                        <section id="home" class="hero-section">
+            <div class="hero-wrapper">
+                <!-- LEFT: Terminal Card -->
+                <div class="hero-glitch-container" data-aos="fade-right">
                     <div class="terminal-header">
                         <span class="terminal-dot red"></span>
                         <span class="terminal-dot yellow"></span>
                         <span class="terminal-dot green"></span>
-                        <span class="terminal-title">lokesh@cybersec ~ </span>
+                        <span class="terminal-title">lokesh@cybersec:~$&nbsp;whoami</span>
                     </div>
                     <div class="hero-text-container">
-                        <p class="hero-greeting" data-aos="fade-up" data-aos-delay="200">
-                            <span class="code-comment">// Hello World, I am</span>
-                        </p>
-                        <h1 class="hero-name glitch" data-text="JAKKALI LOKESH" data-aos="fade-up" data-aos-delay="400">
-                            JAKKALI LOKESH
-                        </h1>
-                        <div class="hero-title-wrapper" data-aos="fade-up" data-aos-delay="600">
+                        <p class="hero-greeting"><span class="code-comment">// Hello World, I am</span></p>
+                        <h1 class="hero-name glitch" data-text="JAKKALI LOKESH">JAKKALI LOKESH</h1>
+                        <div class="hero-title-wrapper">
                             <span class="hero-title-prefix">&gt;&gt;</span>
-                            <h2 class="hero-title">
-                                <span class="typing-text"></span>
-                                <span class="cursor">|</span>
-                            </h2>
+                            <h2 class="hero-title"><span class="typing-text"></span><span class="cursor">|</span></h2>
                         </div>
-                        <p class="hero-description" data-aos="fade-up" data-aos-delay="800">
-                            Passionate Cybersecurity analyst focused on detecting, analyzing, and responding to attacks
-                            using <span class="highlight">SIEM</span>, <span class="highlight">endpoint
-                                telemetry</span>,
-                            and <span class="highlight">network logs</span>. Built hands-on experience through labs,
-                            simulations, and real attack analysis.
-                        </p>
-                        <div class="hero-stats" data-aos="fade-up" data-aos-delay="900">
-                            <div class="stat-item">
-                                <span class="stat-number" data-count="10">0</span>
-                                <span class="stat-label">Certifications</span>
-                            </div>
+                        <p class="hero-description">Cybersecurity analyst &amp; DevOps engineer building <span class="highlight">SIEM</span> detection rules, <span class="highlight">CI/CD pipelines</span> and securing <span class="highlight">AWS cloud</span> infrastructure.</p>
+                        <div class="hero-stats">
+                            <div class="stat-item"><span class="stat-number" data-count="13">0</span><span class="stat-label">Certs</span></div>
                             <div class="stat-divider"></div>
-                            <div class="stat-item">
-                                <span class="stat-number" data-count="6">0</span>
-                                <span class="stat-label">Projects</span>
-                            </div>
+                            <div class="stat-item"><span class="stat-number" data-count="8">0</span><span class="stat-label">Projects</span></div>
                             <div class="stat-divider"></div>
-                            <div class="stat-item">
-                                <span class="stat-number" data-count="5">0</span>
-                                <span class="stat-label">Experiences</span>
-                            </div>
+                            <div class="stat-item"><span class="stat-number" data-count="6">0</span><span class="stat-label">Roles</span></div>
+                            <div class="stat-divider"></div>
+                            <div class="stat-item"><span class="stat-number" data-count="100">0</span><span class="stat-label">$ Bounty</span></div>
                         </div>
-                        <div class="hero-cta" data-aos="fade-up" data-aos-delay="1000">
-                            <a href="Jakkali_Lokesh_SOC_Analyst_L1.pdf" download class="btn btn-primary">
-                                <span class="btn-text">Download Resume</span>
-                                <span class="btn-icon"><i class="fas fa-download"></i></span>
-                            </a>
-                            <a href="#projects" class="btn btn-secondary">
-                                <span class="btn-text">View My Work</span>
-                                <span class="btn-icon"><i class="fas fa-arrow-right"></i></span>
-                            </a>
-                            <a href="#contact" class="btn btn-outline">
-                                <span class="btn-text">Get In Touch</span>
-                                <span class="btn-icon"><i class="fas fa-paper-plane"></i></span>
-                            </a>
+                        <div class="hero-cta">
+                            <div class="resume-dropdown" style="position:relative;display:inline-block;">
+                                <a href="#" class="btn btn-primary" onclick="toggleResumeMenu(event)">
+                                    <span class="btn-text">Download Resume</span>
+                                    <span class="btn-icon"><i class="fas fa-chevron-down"></i></span>
+                                </a>
+                                <div id="resume-menu" style="display:none;position:absolute;top:110%;left:0;background:#0a192f;border:1px solid #00ff88;border-radius:10px;min-width:250px;z-index:999999;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.8);">
+                                    <a href="Jakkali_Lokesh_SOC_Analyst_L1.pdf" download style="display:flex;align-items:center;gap:12px;padding:14px 18px;color:#ccd6f6;text-decoration:none;font-family:Rajdhani,sans-serif;font-weight:600;border-bottom:1px solid rgba(0,255,136,0.1);transition:background 0.2s;" onmouseover="this.style.background='rgba(0,255,136,0.1)'" onmouseout="this.style.background=''">
+                                        <i class="fas fa-shield-alt" style="color:#00ff88;font-size:18px;min-width:20px;"></i>
+                                        <div><div style="font-size:14px;">SOC / Cybersecurity</div><div style="font-size:11px;color:#8892b0;margin-top:2px;">Security Analyst Resume</div></div>
+                                    </a>
+                                    <a href="Jakkali_Lokesh_DevOps_Engineer.pdf" download style="display:flex;align-items:center;gap:12px;padding:14px 18px;color:#ccd6f6;text-decoration:none;font-family:Rajdhani,sans-serif;font-weight:600;border-bottom:1px solid rgba(0,255,136,0.1);transition:background 0.2s;" onmouseover="this.style.background='rgba(0,255,136,0.1)'" onmouseout="this.style.background=''">
+                                        <i class="fas fa-cogs" style="color:#00d4ff;font-size:18px;min-width:20px;"></i>
+                                        <div><div style="font-size:14px;">DevOps / Cloud</div><div style="font-size:11px;color:#8892b0;margin-top:2px;">DevOps Engineer Resume (rename SOC PDF until ready)</div></div>
+                                    </a>
+                                    <a href="Jakkali_Lokesh_SOC_Analyst_L1.pdf" download style="display:flex;align-items:center;gap:12px;padding:14px 18px;color:#ccd6f6;text-decoration:none;font-family:Rajdhani,sans-serif;font-weight:600;transition:background 0.2s;" onmouseover="this.style.background='rgba(0,255,136,0.1)'" onmouseout="this.style.background=''">
+                                        <i class="fas fa-server" style="color:#a855f7;font-size:18px;min-width:20px;"></i>
+                                        <div><div style="font-size:14px;">System / IT Engineer</div><div style="font-size:11px;color:#8892b0;margin-top:2px;">General IT Resume</div></div>
+                                    </a>
+                                </div>
+                            </div>
+                            <a href="#projects" class="btn btn-secondary"><span class="btn-text">View My Work</span><span class="btn-icon"><i class="fas fa-arrow-right"></i></span></a>
+                            <a href="#contact" class="btn btn-outline"><span class="btn-text">Hire Me</span><span class="btn-icon"><i class="fas fa-paper-plane"></i></span></a>
+                        </div>
+                        <div class="hero-meta-row">
+                            <button class="hero-qr-btn" onclick="document.getElementById('qr-modal').classList.add('open')"><i class="fas fa-qrcode"></i> Share</button>
+                            <span class="hero-visitor-badge"><i class="fas fa-eye"></i>&nbsp;<span id="visitor-count">—</span>&nbsp;visitors</span>
+                            <span class="hero-location-badge"><i class="fas fa-map-marker-alt"></i>&nbsp;Bangalore, IN</span>
                         </div>
                     </div>
                 </div>
-                <div class="hero-image" data-aos="fade-left" data-aos-delay="600">
+
+                <!-- RIGHT: Profile + Activity Cards -->
+                <div class="hero-right-col">
                     <div class="profile-container">
                         <div class="profile-ring"></div>
                         <div class="profile-ring"></div>
                         <div class="profile-ring"></div>
                         <div class="profile-glow"></div>
                         <img src="profile.png" alt="Jakkali Lokesh" class="profile-image" loading="lazy">
-                        <div class="profile-status">
-                            <span class="status-dot"></span>
-                            <span class="status-text">Available for Hire</span>
+                        <div class="profile-status"><span class="status-dot"></span><span class="status-text">Available for Hire</span></div>
+                    </div>
+                    <div class="hero-activity-cards">
+                        <a href="https://github.com/jakkalilokesh" target="_blank" rel="noopener" class="hac-card">
+                            <i class="fab fa-github hac-icon"></i><div><div class="hac-title">GitHub</div><div class="hac-sub">271 contributions</div></div>
+                        </a>
+                        <a href="https://tryhackme.com/p/jakkalilokesh" target="_blank" rel="noopener" class="hac-card">
+                            <i class="fas fa-flag hac-icon" style="color:#ff6b35;"></i><div><div class="hac-title">TryHackMe</div><div class="hac-sub">Top 8% Global</div></div>
+                        </a>
+                        <a href="https://www.linkedin.com/in/jakkali-lokesh-a1a809211/" target="_blank" rel="noopener" class="hac-card">
+                            <i class="fab fa-linkedin hac-icon" style="color:#0077b5;"></i><div><div class="hac-title">LinkedIn</div><div class="hac-sub">Connect with me</div></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scroll-indicator"><div class="mouse"><div class="wheel"></div></div><span>Scroll Down</span></div>
+        </section>
+
+
+        <!-- ═══ WHAT I DO SECTION ═══ -->
+        <section class="what-i-do-section" id="what-i-do">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <span class="section-tag">&lt;services&gt;</span>
+                    <h2 class="section-title">What I Do</h2>
+                    <div class="section-line"></div>
+                </div>
+                <div class="what-i-do-grid">
+                    <div class="wid-card" style="--wid-color:#00ff88" data-aos="fade-up" data-aos-delay="100">
+                        <div class="wid-icon"><i class="fas fa-shield-alt"></i></div>
+                        <div class="wid-title">Cybersecurity & SOC</div>
+                        <div class="wid-desc">Monitor, detect and respond to threats using SIEM, EDR, and threat intelligence platforms. Perform VAPT, malware analysis and digital forensics.</div>
+                        <div class="wid-tags">
+                            <span class="wid-tag">SIEM</span><span class="wid-tag">EDR</span>
+                            <span class="wid-tag">VAPT</span><span class="wid-tag">Splunk</span>
+                            <span class="wid-tag">Wireshark</span>
+                        </div>
+                    </div>
+                    <div class="wid-card" style="--wid-color:#00d4ff" data-aos="fade-up" data-aos-delay="200">
+                        <div class="wid-icon" style="background:rgba(0,212,255,0.08);border-color:rgba(0,212,255,0.15);"><i class="fas fa-cogs"></i></div>
+                        <div class="wid-title">DevOps & Automation</div>
+                        <div class="wid-desc">Build and maintain CI/CD pipelines, containerize applications with Docker & Kubernetes, and automate infrastructure with Terraform and Ansible.</div>
+                        <div class="wid-tags">
+                            <span class="wid-tag" style="color:#00d4ff;background:rgba(0,212,255,0.07);border-color:rgba(0,212,255,0.15);">Docker</span>
+                            <span class="wid-tag" style="color:#00d4ff;background:rgba(0,212,255,0.07);border-color:rgba(0,212,255,0.15);">Kubernetes</span>
+                            <span class="wid-tag" style="color:#00d4ff;background:rgba(0,212,255,0.07);border-color:rgba(0,212,255,0.15);">Jenkins</span>
+                            <span class="wid-tag" style="color:#00d4ff;background:rgba(0,212,255,0.07);border-color:rgba(0,212,255,0.15);">Terraform</span>
+                        </div>
+                    </div>
+                    <div class="wid-card" style="--wid-color:#a855f7" data-aos="fade-up" data-aos-delay="300">
+                        <div class="wid-icon" style="background:rgba(168,85,247,0.08);border-color:rgba(168,85,247,0.15);"><i class="fab fa-aws"></i></div>
+                        <div class="wid-title">Cloud Infrastructure</div>
+                        <div class="wid-desc">Design, deploy and secure cloud-native architectures on AWS. Configure VPCs, IAM policies, Lambda functions and CloudWatch monitoring.</div>
+                        <div class="wid-tags">
+                            <span class="wid-tag" style="color:#a855f7;background:rgba(168,85,247,0.07);border-color:rgba(168,85,247,0.15);">AWS EC2</span>
+                            <span class="wid-tag" style="color:#a855f7;background:rgba(168,85,247,0.07);border-color:rgba(168,85,247,0.15);">S3</span>
+                            <span class="wid-tag" style="color:#a855f7;background:rgba(168,85,247,0.07);border-color:rgba(168,85,247,0.15);">Lambda</span>
+                            <span class="wid-tag" style="color:#a855f7;background:rgba(168,85,247,0.07);border-color:rgba(168,85,247,0.15);">CloudWatch</span>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="scroll-indicator">
-                <div class="mouse">
-                    <div class="wheel"></div>
-                </div>
-                <span>Scroll Down</span>
-            </div>
         </section>
 
-        <section id="about" class="about-section">
+                <section id="about" class="about-section">
             <div class="container">
                 <div class="section-header" data-aos="fade-up">
                     <span class="section-tag">&lt;about&gt;</span>
@@ -213,120 +364,69 @@
 
                 <div class="about-grid">
                     <!-- Bio Card -->
-                    <div class="about-bio-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="about-bio-card" data-aos="fade-right" data-aos-delay="100">
                         <div class="bio-header">
-                            <div class="bio-icon">
-                                <i class="fas fa-user-shield"></i>
-                            </div>
+                            <div class="bio-icon"><i class="fas fa-user-shield"></i></div>
                             <div class="bio-title">
-                                <h3>Cybersecurity Analyst</h3>
-                                <span class="bio-location"><i class="fas fa-map-marker-alt"></i> Kurnool, Andhra
-                                    Pradesh, India</span>
+                                <h3>Cybersecurity &amp; DevOps Engineer</h3>
+                                <span class="bio-location"><i class="fas fa-map-marker-alt"></i> Bangalore, India</span>
                             </div>
                         </div>
                         <div class="bio-content">
-                            <p>A passionate security professional specializing in <span class="highlight">Blue
-                                    Teaming</span>,
-                                <span class="highlight">SOC Analysis</span>, <span class="highlight">Threat Detection &
-                                    Response</span>,
-                                and <span class="highlight">Digital Forensics</span>.
-                            </p>
-                            <p>Built hands-on experience through structured labs on <span
-                                    class="highlight">TryHackMe</span>,
-                                <span class="highlight">PortSwigger</span>, <span class="highlight">LetsDefend</span>,
-                                and
-                                <span class="highlight">HackTheBox</span>, developing strong skills in analyzing
-                                malware,
-                                investigating incidents, and building detection rules.
-                            </p>
+                            <p>Passionate tech professional specializing in <span class="highlight">Blue Teaming</span>, <span class="highlight">SOC Analysis</span>, <span class="highlight">DevOps Engineering</span>, and <span class="highlight">AWS Cloud</span> — bridging security operations with modern deployment practices.</p>
+                            <p>Built hands-on experience via <span class="highlight">TryHackMe</span>, <span class="highlight">PortSwigger</span>, <span class="highlight">HackTheBox</span> — developing strong skills in malware analysis, incident investigation and detection engineering.</p>
                         </div>
                         <div class="bio-highlights">
-                            <div class="bio-highlight-item">
-                                <i class="fas fa-trophy"></i>
-                                <span>$100 Bug Bounty on Udemy</span>
-                            </div>
-                            <div class="bio-highlight-item">
-                                <i class="fas fa-flag"></i>
-                                <span>CTF Competitor</span>
-                            </div>
-                            <div class="bio-highlight-item">
-                                <i class="fas fa-search"></i>
-                                <span>Active Threat Hunter</span>
-                            </div>
+                            <div class="bio-highlight-item"><i class="fas fa-trophy"></i><span>$100 Bug Bounty awarded by Udemy</span></div>
+                            <div class="bio-highlight-item"><i class="fas fa-flag"></i><span>CTF Competitor — Top 8% on TryHackMe</span></div>
+                            <div class="bio-highlight-item"><i class="fas fa-search"></i><span>Active Threat Hunter &amp; SOC Analyst</span></div>
+                            <div class="bio-highlight-item"><i class="fab fa-aws"></i><span>AWS Cloud Practitioner Certified</span></div>
+                            <div class="bio-highlight-item"><i class="fas fa-graduation-cap"></i><span>B.Tech — Information Technology, 2024</span></div>
                         </div>
                         <div class="bio-status">
                             <div class="status-indicator"></div>
-                            <span>Actively seeking SOC Analyst, Security Analyst & VAPT roles</span>
+                            <span>Actively seeking SOC Analyst, DevOps &amp; Cloud Security roles</span>
                         </div>
                     </div>
 
                     <!-- Technical Arsenal -->
-                    <div class="arsenal-container" data-aos="fade-up" data-aos-delay="200">
+                    <div class="arsenal-container" data-aos="fade-left" data-aos-delay="200">
                         <div class="arsenal-header">
                             <i class="fas fa-crosshairs"></i>
                             <h3>Technical Arsenal</h3>
                         </div>
-
                         <div class="arsenal-grid">
-                            <div class="arsenal-category" data-category="defensive">
-                                <h4><i class="fas fa-shield-alt"></i> Blue Team</h4>
-                                <div class="arsenal-tags">
-                                    <span>SOC Analysis</span>
-                                    <span>Threat Detection</span>
-                                    <span>Incident Response</span>
-                                    <span>Malware Analysis</span>
-                                    <span>MITRE ATT&CK</span>
-                                    <span>Digital Forensics</span>
-                                </div>
-                            </div>
-
-                            <div class="arsenal-category" data-category="offensive">
-                                <h4><i class="fas fa-skull-crossbones"></i> Red Team</h4>
-                                <div class="arsenal-tags">
-                                    <span>VAPT</span>
-                                    <span>Penetration Testing</span>
-                                    <span>Web App Security</span>
-                                    <span>Bug Bounty</span>
-                                    <span>OWASP Top 10</span>
-                                </div>
-                            </div>
-
-                            <div class="arsenal-category" data-category="tools">
-                                <h4><i class="fas fa-tools"></i> Security Tools</h4>
-                                <div class="arsenal-tags">
-                                    <span>Splunk</span>
-                                    <span>Wazuh</span>
-                                    <span>ELK Stack</span>
-                                    <span>Wireshark</span>
-                                    <span>Burp Suite</span>
-                                    <span>Nmap</span>
-                                    <span>Metasploit</span>
-                                    <span>YARA</span>
-                                </div>
-                            </div>
-
-                            <div class="arsenal-category" data-category="code">
-                                <h4><i class="fas fa-code"></i> Programming</h4>
-                                <div class="arsenal-tags">
-                                    <span>Python</span>
-                                    <span>Bash</span>
-                                    <span>PowerShell</span>
-                                    <span>JavaScript</span>
-                                    <span>SQL</span>
-                                </div>
-                            </div>
-
-                            <div class="arsenal-category" data-category="platforms">
-                                <h4><i class="fas fa-gamepad"></i> Platforms</h4>
-                                <div class="arsenal-tags">
-                                    <span>TryHackMe</span>
-                                    <span>HackTheBox</span>
-                                    <span>LetsDefend</span>
-                                    <span>PortSwigger</span>
-                                    <span>HackerOne</span>
-                                </div>
-                            </div>
+                            <div class="arsenal-category"><h4><i class="fas fa-shield-alt"></i> Blue Team</h4><div class="arsenal-tags"><span>SOC Analysis</span><span>Threat Detection</span><span>Incident Response</span><span>Malware Analysis</span><span>MITRE ATT&amp;CK</span><span>Digital Forensics</span></div></div>
+                            <div class="arsenal-category"><h4><i class="fas fa-skull-crossbones"></i> Red Team</h4><div class="arsenal-tags"><span>VAPT</span><span>Penetration Testing</span><span>Web App Security</span><span>Bug Bounty</span><span>OWASP Top 10</span></div></div>
+                            <div class="arsenal-category"><h4><i class="fas fa-tools"></i> Security Tools</h4><div class="arsenal-tags"><span>Splunk</span><span>Wazuh</span><span>ELK Stack</span><span>Wireshark</span><span>Burp Suite</span><span>Nmap</span><span>YARA</span></div></div>
+                            <div class="arsenal-category"><h4><i class="fas fa-code"></i> Languages</h4><div class="arsenal-tags"><span>Python</span><span>Bash</span><span>PowerShell</span><span>JavaScript</span><span>SQL</span></div></div>
+                            <div class="arsenal-category" style="grid-column:1/-1"><h4><i class="fas fa-cogs"></i> DevOps &amp; Cloud</h4><div class="arsenal-tags"><span>AWS (EC2, Lambda, EKS, S3)</span><span>Docker</span><span>Kubernetes</span><span>Terraform</span><span>Ansible</span><span>Jenkins</span><span>CI/CD</span><span>Grafana</span><span>Prometheus</span></div></div>
                         </div>
+                    </div>
+                </div>
+
+                <!-- Fun Stats -->
+                <div class="about-fun-stats" data-aos="fade-up" data-aos-delay="200">
+                    <div class="afs-card" style="--afs-color:#00ff88"><div class="afs-icon">🏆</div><span class="afs-number">13</span><span class="afs-label">Certifications</span></div>
+                    <div class="afs-card" style="--afs-color:#00d4ff"><div class="afs-icon">🚀</div><span class="afs-number">8+</span><span class="afs-label">Projects</span></div>
+                    <div class="afs-card" style="--afs-color:#a855f7"><div class="afs-icon">🎯</div><span class="afs-number">500+</span><span class="afs-label">THM Rooms</span></div>
+                    <div class="afs-card" style="--afs-color:#ff6b35"><div class="afs-icon">💰</div><span class="afs-number">$100</span><span class="afs-label">Bug Bounty</span></div>
+                </div>
+
+                <!-- Skill Proficiency Bars -->
+                <div class="skills-bars-section" data-aos="fade-up" data-aos-delay="100">
+                    <div class="section-header" style="margin-bottom:28px;">
+                        <span class="section-tag">&lt;proficiency&gt;</span>
+                        <h3 class="section-title" style="font-size:1.5rem;">Skill Proficiency</h3>
+                        <div class="section-line"></div>
+                    </div>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px 40px;">
+                        <div class="skill-bar-item"><div style="display:flex;justify-content:space-between;margin-bottom:6px;"><span style="font-family:'Rajdhani',sans-serif;font-weight:600;color:var(--text-primary);"><i class="fas fa-shield-alt" style="color:var(--primary);margin-right:6px;"></i>SOC Analysis</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--primary);">88%</span></div><div class="skill-track"><div class="skill-fill" data-pct="88" style="background:linear-gradient(90deg,#00ff88,#00d4ff);"></div></div></div>
+                        <div class="skill-bar-item"><div style="display:flex;justify-content:space-between;margin-bottom:6px;"><span style="font-family:'Rajdhani',sans-serif;font-weight:600;color:var(--text-primary);"><i class="fas fa-bug" style="color:var(--primary);margin-right:6px;"></i>VAPT / Bug Bounty</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--primary);">82%</span></div><div class="skill-track"><div class="skill-fill" data-pct="82" style="background:linear-gradient(90deg,#00ff88,#ff4757);"></div></div></div>
+                        <div class="skill-bar-item"><div style="display:flex;justify-content:space-between;margin-bottom:6px;"><span style="font-family:'Rajdhani',sans-serif;font-weight:600;color:var(--text-primary);"><i class="fab fa-aws" style="color:var(--primary);margin-right:6px;"></i>AWS Cloud</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--primary);">80%</span></div><div class="skill-track"><div class="skill-fill" data-pct="80" style="background:linear-gradient(90deg,#00d4ff,#a855f7);"></div></div></div>
+                        <div class="skill-bar-item"><div style="display:flex;justify-content:space-between;margin-bottom:6px;"><span style="font-family:'Rajdhani',sans-serif;font-weight:600;color:var(--text-primary);"><i class="fas fa-cogs" style="color:var(--primary);margin-right:6px;"></i>DevOps / CI-CD</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--primary);">85%</span></div><div class="skill-track"><div class="skill-fill" data-pct="85" style="background:linear-gradient(90deg,#a855f7,#00d4ff);"></div></div></div>
+                        <div class="skill-bar-item"><div style="display:flex;justify-content:space-between;margin-bottom:6px;"><span style="font-family:'Rajdhani',sans-serif;font-weight:600;color:var(--text-primary);"><i class="fas fa-terminal" style="color:var(--primary);margin-right:6px;"></i>Python / Bash</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--primary);">78%</span></div><div class="skill-track"><div class="skill-fill" data-pct="78" style="background:linear-gradient(90deg,#ffd700,#ff6b35);"></div></div></div>
+                        <div class="skill-bar-item"><div style="display:flex;justify-content:space-between;margin-bottom:6px;"><span style="font-family:'Rajdhani',sans-serif;font-weight:600;color:var(--text-primary);"><i class="fas fa-search" style="color:var(--primary);margin-right:6px;"></i>Digital Forensics</span><span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--primary);">75%</span></div><div class="skill-track"><div class="skill-fill" data-pct="75" style="background:linear-gradient(90deg,#ff4757,#a855f7);"></div></div></div>
                     </div>
                 </div>
 
@@ -344,6 +444,37 @@
 
                 <div class="timeline">
                     <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+                      <div class="timeline-marker">
+                        <i class="fas fa-cogs"></i>
+                      </div>
+                      <div class="timeline-content">
+                        <div class="timeline-header">
+                          <h3 class="timeline-title">DevOps Intern</h3>
+                          <span class="timeline-company">
+                            <i class="fas fa-building"></i> PySpiders, BTM Layout, Bangalore
+                          </span>
+                        </div>
+                        <span class="timeline-date">
+                          <i class="fas fa-calendar-alt"></i> Jan 2026 – Present
+                        </span>
+                        <p class="timeline-description">
+                          Building CI/CD pipelines with <span class="highlight">Jenkins</span>, Docker, and GitHub to automate
+                          application deployments. Managing Docker containers and Kubernetes clusters for scalable Linux-based
+                          environments. Performing Linux administration, shell scripting, and process monitoring.
+                          Observing infrastructure health with <span class="highlight">AWS CloudWatch</span>, Grafana, and Prometheus.
+                        </p>
+                        <div class="timeline-tags">
+                          <span class="tag">Jenkins</span>
+                          <span class="tag">Kubernetes</span>
+                          <span class="tag">Docker</span>
+                          <span class="tag">AWS CloudWatch</span>
+                          <span class="tag">Linux</span>
+                          <span class="tag">Grafana</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
                         <div class="timeline-marker">
                             <i class="fas fa-bug"></i>
                         </div>
@@ -409,16 +540,23 @@
                                 </span>
                             </div>
                             <span class="timeline-date">
-                                <i class="fas fa-calendar-alt"></i> May 2024 – Jul 2024
+                                <i class="fas fa-calendar-alt"></i> May 2025 – Jul 2025
                             </span>
                             <p class="timeline-description">
-                                Worked with AWS services including EC2, S3, RDS, and CloudFront.
-                                Gained hands-on experience in cloud infrastructure and DevOps practices.
+                                Built and deployed a serverless AWS application using Lambda, API Gateway, DynamoDB, S3, CloudFront, and IAM.
+                                Integrated <span class="highlight">AWS Cognito</span> and JWT-based authentication for secure user authorization.
+                                Automated deployment workflows using AWS CLI, <span class="highlight">GitHub Actions</span>, and Git.
+                                Implemented CloudWatch log monitoring and metrics tracking for infrastructure troubleshooting.
+                                Optimized cloud resources for scalability with operational costs maintained below <span class="highlight">$25/month</span>.
                             </p>
                             <div class="timeline-tags">
-                                <span class="tag">AWS</span>
-                                <span class="tag">DevOps</span>
-                                <span class="tag">Cloud Infrastructure</span>
+                                <span class="tag">Lambda</span>
+                                <span class="tag">API Gateway</span>
+                                <span class="tag">DynamoDB</span>
+                                <span class="tag">Cognito</span>
+                                <span class="tag">JWT</span>
+                                <span class="tag">GitHub Actions</span>
+                                <span class="tag">CloudFront</span>
                             </div>
                         </div>
                     </div>
@@ -462,12 +600,17 @@
                                 <i class="fas fa-calendar-alt"></i> Jul 2024 – Aug 2024
                             </span>
                             <p class="timeline-description">
-                                Learned cloud computing fundamentals and worked on cloud-based projects.
+                                Provisioned virtual machines and configured cloud infrastructure across AWS and Azure platforms.
+                                Configured VPC networking, security groups, and cloud networking components within AWS and Azure environments.
+                                Assisted with Linux system configuration, monitoring, and troubleshooting activities.
+                                Supported application deployment, cloud resource provisioning, and environment configuration tasks.
                             </p>
                             <div class="timeline-tags">
-                                <span class="tag">Cloud Computing</span>
-                                <span class="tag">Azure</span>
                                 <span class="tag">AWS</span>
+                                <span class="tag">Azure</span>
+                                <span class="tag">VPC</span>
+                                <span class="tag">Linux</span>
+                                <span class="tag">Cloud Infrastructure</span>
                             </div>
                         </div>
                     </div>
@@ -490,6 +633,7 @@
                     <button class="filter-btn" data-filter="security">Security</button>
                     <button class="filter-btn" data-filter="python">Python</button>
                     <button class="filter-btn" data-filter="web">Web</button>
+                    <button class="filter-btn" data-filter="devops">DevOps</button>
                 </div>
 
                 <div class="projects-grid">
@@ -689,6 +833,72 @@
                             <span class="project-category"><i class="fab fa-python"></i> Python</span>
                         </div>
                     </div>
+
+                    <div class="project-card" data-category="devops" data-aos="fade-up" data-aos-delay="700">
+                        <div class="project-image">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="https://github.com/jakkalilokesh" target="_blank" class="project-link" title="View Code">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="project-icon">
+                                <i class="fas fa-infinity"></i>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">CI/CD Pipeline with Kubernetes</h3>
+                            <p class="project-description">
+                                Production-style CI/CD pipeline using Jenkins and GitHub Actions for automated Docker image builds
+                                and deployments. Containerized apps deployed into <span class="highlight">Kubernetes clusters</span>
+                                with rolling updates, webhook triggers, and automated validation workflows.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Jenkins</span>
+                                <span class="tech-tag">Docker</span>
+                                <span class="tech-tag">Kubernetes</span>
+                                <span class="tech-tag">GitHub Actions</span>
+                                <span class="tech-tag">AWS EC2</span>
+                            </div>
+                        </div>
+                        <div class="project-footer">
+                            <span class="project-category"><i class="fas fa-cogs"></i> DevOps</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-category="devops" data-aos="fade-up" data-aos-delay="800">
+                        <div class="project-image">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="https://github.com/jakkalilokesh" target="_blank" class="project-link" title="View Code">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="project-icon">
+                                <i class="fas fa-layer-group"></i>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Infrastructure Automation &mdash; Terraform &amp; Ansible</h3>
+                            <p class="project-description">
+                                Automated AWS EC2 provisioning using <span class="highlight">Terraform</span> modules and IaC practices.
+                                Configured Linux servers and deployment environments via <span class="highlight">Ansible</span> playbooks.
+                                Reusable infrastructure templates for scalable cloud resource provisioning.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Terraform</span>
+                                <span class="tech-tag">Ansible</span>
+                                <span class="tech-tag">AWS EC2</span>
+                                <span class="tech-tag">Linux</span>
+                                <span class="tech-tag">IaC</span>
+                            </div>
+                        </div>
+                        <div class="project-footer">
+                            <span class="project-category"><i class="fas fa-cloud"></i> Cloud</span>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="projects-cta" data-aos="fade-up">
@@ -791,11 +1001,35 @@
                         <h4>AWS Cloud Practitioner</h4>
                         <span class="cert-issuer">Amazon Web Services</span>
                     </div>
+
+                    <div class="cert-card" data-aos="fade-up" data-aos-delay="600">
+                        <div class="cert-icon aws">
+                            <i class="fab fa-aws"></i>
+                        </div>
+                        <h4>AWS Cloud &amp; DevOps Internship</h4>
+                        <span class="cert-issuer">APSSDC</span>
+                    </div>
+
+                    <div class="cert-card" data-aos="fade-up" data-aos-delay="650">
+                        <div class="cert-icon udemy">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <h4>Cloud Engineering Internship</h4>
+                        <span class="cert-issuer">ExcelR</span>
+                    </div>
+
+                    <div class="cert-card" data-aos="fade-up" data-aos-delay="700">
+                        <div class="cert-icon tryhackme">
+                            <i class="fas fa-code-branch"></i>
+                        </div>
+                        <h4>DevOps Internship Training</h4>
+                        <span class="cert-issuer">PySpiders</span>
+                    </div>
                 </div>
 
                 <div class="cert-counter" data-aos="fade-up">
                     <div class="counter-item">
-                        <span class="counter-number" data-count="10">0</span>
+                        <span class="counter-number" data-count="13">0</span>
                         <span class="counter-label">Total Certifications</span>
                     </div>
                 </div>
@@ -813,6 +1047,28 @@
                 </div>
 
                 <div class="achievements-grid">
+                    <div class="achievement-card bounty" data-aos="fade-up" data-aos-delay="50">
+                        <div class="achievement-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div class="achievement-content">
+                            <span class="achievement-label">Hackathon &mdash; 1st Place</span>
+                            <h3 class="achievement-title">Amaravathi Quantum Valley Hackathon 2025</h3>
+                            <p class="achievement-description">
+                                Awarded <span class="highlight">1st Place</span> at the Pre-Finals stage as a team member for solving the
+                                <span class="highlight">Quantum Path Planning for Delivery Vehicles</span> &mdash; Fleet Optimization challenge.
+                            </p>
+                            <div class="achievement-meta">
+                                <span class="meta-item"><i class="fas fa-calendar"></i> 2025</span>
+                                <span class="meta-item"><i class="fas fa-medal"></i> Pre-Finals Winner</span>
+                            </div>
+                        </div>
+                        <div class="bounty-badge">
+                            <span class="bounty-amount" style="font-size:1.4rem;">&#127947;</span>
+                            <span class="bounty-label">1st Place</span>
+                        </div>
+                    </div>
+
                     <div class="achievement-card bounty" data-aos="fade-up" data-aos-delay="100">
                         <div class="achievement-icon">
                             <i class="fas fa-trophy"></i>
@@ -1006,10 +1262,12 @@
                         <div class="contact-text">
                             <h3>Let's Connect!</h3>
                             <p>
-                                I'm currently looking for opportunities in <span class="highlight">SOC</span>,
-                                <span class="highlight">Blue Teaming</span>, <span class="highlight">Red Teaming</span>,
+                                I'm currently looking for opportunities in <span class="highlight">SOC Analysis</span>,
+                                <span class="highlight">DevOps Engineering</span>, <span class="highlight">Cloud Infrastructure</span>,
                                 and <span class="highlight">Cybersecurity</span> roles. Whether you have a question,
-                                a project idea, or just want to say hi, feel free to reach out!
+                                a project idea, or just want to say hi — feel free to reach out!
+                                <br><br>
+                                <span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--primary);opacity:0.7;">⚡ Avg response time: &lt; 24 hours</span>
                             </p>
                         </div>
 
@@ -1021,7 +1279,7 @@
                                 <div class="contact-data">
                                     <span class="contact-label">Email</span>
                                     <a href="mailto:jakkalilokesh@gmail.com"
-                                        class="contact-value contact-link">jakkalilokesh@gmail.com</a>
+                                        class="contact-value contact-link" data-copy="jakkalilokesh@gmail.com" title="Click to copy">jakkalilokesh@gmail.com <i class="fas fa-copy" style="font-size:11px;opacity:0.6;margin-left:4px;"></i></a>
                                 </div>
                             </div>
                             <div class="contact-item">
@@ -1031,7 +1289,7 @@
                                 <div class="contact-data">
                                     <span class="contact-label">WhatsApp</span>
                                     <a href="https://wa.me/917075734356" target="_blank"
-                                        class="contact-value contact-link">+91 7075734356</a>
+                                        class="contact-value contact-link" data-copy="+917075734356" title="Click to copy">+91 7075734356 <i class="fas fa-copy" style="font-size:11px;opacity:0.6;margin-left:4px;"></i></a>
                                 </div>
                             </div>
                             <div class="contact-item">
@@ -1040,7 +1298,7 @@
                                 </div>
                                 <div class="contact-data">
                                     <span class="contact-label">Location</span>
-                                    <span class="contact-value">Kurnool, Andhra Pradesh, India</span>
+                                    <span class="contact-value">Bangalore, India</span>
                                 </div>
                             </div>
                         </div>
@@ -1132,14 +1390,10 @@
                     Designed & Built by <span class="highlight">Jakkali Lokesh</span>
                 </p>
                 <p class="footer-copyright">
-                    &copy; 2026 All Rights Reserved
+                    &copy; <span id="current-year">2026</span> All Rights Reserved
                 </p>
                 <div class="footer-meta">
-                    <span class="visitor-counter">
-                        <i class="fas fa-eye"></i>
-                        <span id="visitor-count">Loading...</span> visitors
-                    </span>
-                    <span class="last-updated">Last updated: Jan 2026</span>
+                    <span class="last-updated">Last updated: Jun 2026</span>
                 </div>
             </div>
             <div class="footer-wave">
@@ -1160,4 +1414,7 @@
     <script src="script.js"></script>
 </body>
 
+</html>
+
+</body>
 </html>

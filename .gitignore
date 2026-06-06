@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-error.log
+
+# Build outputs
+dist/
+build/
+.cache/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+logs/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Temporary
+tmp/
+temp/
+*.tmp
+
+# Keep these PDFs tracked but gitignore other large binary files
+# *.pdf   ← keep tracked (resumes)
