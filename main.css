@@ -1,4 +1,4 @@
-﻿/* ======================================================
+/* ======================================================
    PORTFOLIO — JAKKALI LOKESH  |  main.css  v4.0
    Complete merged stylesheet (styles + all extras)
    Generated: 2026-06-06 23:06
@@ -6613,4 +6613,1085 @@ footer {
     }
     .stat-divider { display: none !important; }
     .footer-content { padding: 0 20px !important; }
+}
+
+/* ================================================================
+   RESPONSIVE PATCH v8.0 — DEFINITIVE MOBILE FIX
+   Applied absolutely last — overrides ALL previous rules including
+   the "MASTER VISUAL FIX v6.0" !important declarations
+   ================================================================ */
+
+/* ── Prevent horizontal overflow globally ── */
+html, body {
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+}
+
+* {
+    box-sizing: border-box !important;
+}
+
+/* ── Open-to-Work Banner — wraps on small screens ── */
+#otw-banner {
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+}
+
+/* ─────────────────────────────────────────────────────
+   1024px — Tablet Portrait & Small Laptop
+   ───────────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 28px !important;
+        max-width: 100% !important;
+    }
+
+    /* Hero — stack terminal over profile */
+    .hero-wrapper {
+        grid-template-columns: 1fr !important;
+        padding: 110px 28px 60px !important;
+        gap: 30px !important;
+        max-width: 100% !important;
+    }
+
+    .hero-right-col {
+        position: static !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        width: 100% !important;
+        gap: 20px !important;
+    }
+
+    .hero-activity-cards {
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        width: 100% !important;
+    }
+
+    .hac-card {
+        flex: 1 1 180px !important;
+    }
+
+    /* Hero name no longer needs to be one line */
+    .hero-name {
+        white-space: normal !important;
+        font-size: clamp(1.9rem, 5vw, 2.8rem) !important;
+    }
+
+    /* About — single column */
+    .about-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .arsenal-grid {
+        grid-template-columns: 1fr 1fr !important;
+    }
+
+    .about-fun-stats {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    /* What I Do — 2 columns on tablet */
+    .what-i-do-grid {
+        grid-template-columns: 1fr 1fr !important;
+    }
+
+    /* Projects — 2 columns on tablet */
+    .projects-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 20px !important;
+    }
+
+    /* Certifications — 2-3 columns auto on tablet */
+    .certifications-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
+    }
+
+    /* Skills bars — single column */
+    .skills-bars-section > div:last-child {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Navbar — show hamburger */
+    .nav-toggle {
+        display: flex !important;
+    }
+
+    .nav-menu {
+        position: fixed !important;
+        top: 0 !important;
+        right: -100% !important;
+        width: min(320px, 82vw) !important;
+        height: 100vh !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        justify-content: flex-start !important;
+        padding: 90px 24px 40px !important;
+        background: rgba(2, 12, 27, 0.98) !important;
+        backdrop-filter: blur(30px) !important;
+        -webkit-backdrop-filter: blur(30px) !important;
+        border-left: 1px solid rgba(0, 255, 136, 0.15) !important;
+        box-shadow: -20px 0 60px rgba(0, 0, 0, 0.6) !important;
+        transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        z-index: 99980 !important;
+        overflow-y: auto !important;
+        gap: 4px !important;
+    }
+
+    .nav-menu.active {
+        right: 0 !important;
+    }
+
+    .nav-item {
+        width: 100% !important;
+    }
+
+    .nav-link {
+        display: block !important;
+        width: 100% !important;
+        padding: 14px 16px !important;
+        font-size: 16px !important;
+        border-radius: 8px !important;
+    }
+}
+
+/* ─────────────────────────────────────────────────────
+   768px — Mobile Landscape / Large Phone
+   ───────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 20px !important;
+    }
+
+    section {
+        padding: 60px 0 !important;
+    }
+
+    /* Hero */
+    .hero-wrapper {
+        padding: 100px 20px 50px !important;
+    }
+
+    .hero-name {
+        font-size: 2rem !important;
+        white-space: normal !important;
+        line-height: 1.2 !important;
+    }
+
+    .hero-description {
+        font-size: 14px !important;
+    }
+
+    .hero-text-container {
+        padding: 24px 20px 28px !important;
+    }
+
+    /* Hero stats — 2x2 grid */
+    .hero-stats {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 14px !important;
+        padding: 16px !important;
+    }
+
+    .stat-divider {
+        display: none !important;
+    }
+
+    /* CTA buttons — center and full-width */
+    .hero-cta {
+        justify-content: center !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 10px !important;
+    }
+
+    .hero-cta > * {
+        width: 100% !important;
+        justify-content: center !important;
+        text-align: center !important;
+    }
+
+    /* Resume dropdown should stay left-aligned inside full-width parent */
+    .resume-dropdown {
+        width: 100% !important;
+    }
+
+    .resume-dropdown > a {
+        width: 100% !important;
+        justify-content: center !important;
+    }
+
+    #resume-menu {
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+    }
+
+    /* Hero meta row */
+    .hero-meta-row {
+        justify-content: center !important;
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+    }
+
+    /* Hero right col — stack vertically */
+    .hero-right-col {
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+
+    .hero-activity-cards {
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+
+    .hac-card {
+        flex: unset !important;
+        width: 100% !important;
+    }
+
+    /* Profile ring sizes */
+    .profile-container {
+        width: 220px !important;
+        height: 220px !important;
+    }
+
+    .profile-image {
+        width: 160px !important;
+        height: 160px !important;
+    }
+
+    .profile-ring:nth-child(1) { width: 210px !important; height: 210px !important; }
+    .profile-ring:nth-child(2) { width: 182px !important; height: 182px !important; }
+    .profile-ring:nth-child(3) { width: 155px !important; height: 155px !important; }
+
+    /* What I Do — single column */
+    .what-i-do-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* About */
+    .about-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .about-fun-stats {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 12px !important;
+    }
+
+    .arsenal-grid {
+        grid-template-columns: 1fr 1fr !important;
+    }
+
+    /* Experience timeline */
+    .timeline::before {
+        left: 16px !important;
+    }
+
+    .timeline-item {
+        padding-left: 48px !important;
+        margin-bottom: 24px !important;
+    }
+
+    .timeline-marker {
+        left: 6px !important;
+        top: 4px !important;
+    }
+
+    .timeline-content {
+        padding: 18px !important;
+    }
+
+    .timeline-header {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 4px !important;
+    }
+
+    .timeline-tags {
+        flex-wrap: wrap !important;
+        gap: 6px !important;
+    }
+
+    /* Projects — single column */
+    .projects-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Certifications — 2 cols */
+    .certifications-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 14px !important;
+    }
+
+    /* Achievements — single column */
+    .achievements-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .achievement-card {
+        flex-direction: column !important;
+        gap: 16px !important;
+    }
+
+    /* Education — single column */
+    .education-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Contact — single column */
+    .contact-content {
+        grid-template-columns: 1fr !important;
+        gap: 28px !important;
+    }
+
+    /* Footer */
+    .footer-content {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 10px !important;
+        padding: 0 20px !important;
+    }
+
+    /* Skills bar section */
+    .skills-bars-section > div:last-child {
+        grid-template-columns: 1fr !important;
+        gap: 14px !important;
+    }
+
+    /* Badges grid */
+    .badges-grid {
+        flex-wrap: wrap !important;
+        gap: 10px !important;
+    }
+
+    /* Open to Work banner */
+    #otw-banner {
+        flex-direction: column !important;
+        align-items: center !important;
+        padding: 10px 16px !important;
+        gap: 6px !important;
+    }
+
+    #otw-banner span:nth-child(2) {
+        text-align: center !important;
+    }
+
+    /* Navbar shrink */
+    .nav-container {
+        padding: 0 16px !important;
+        height: 60px !important;
+    }
+
+    .nav-logo {
+        font-size: 1.1rem !important;
+    }
+
+    .nav-logo-img {
+        width: 30px !important;
+        height: 30px !important;
+    }
+
+    /* Hide live clock on small screens */
+    #live-clock {
+        display: none !important;
+    }
+
+    /* Back to top & WhatsApp float */
+    #whatsapp-float {
+        width: 42px !important;
+        height: 42px !important;
+        font-size: 20px !important;
+        bottom: 110px !important;
+        right: 14px !important;
+    }
+
+    #back-to-top {
+        bottom: 62px !important;
+        right: 14px !important;
+    }
+}
+
+/* ─────────────────────────────────────────────────────
+   480px — Standard Phones (Portrait)
+   ───────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 16px !important;
+    }
+
+    .hero-wrapper {
+        padding: 90px 16px 40px !important;
+    }
+
+    .hero-name {
+        font-size: 1.8rem !important;
+        letter-spacing: 1px !important;
+    }
+
+    .stat-number {
+        font-size: 1.5rem !important;
+    }
+
+    .stat-label {
+        font-size: 9px !important;
+    }
+
+    .btn {
+        padding: 10px 18px !important;
+        font-size: 13px !important;
+    }
+
+    .about-fun-stats {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 10px !important;
+    }
+
+    .arsenal-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Certifications — single column on small phones */
+    .certifications-grid {
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+    }
+
+    .cert-card {
+        padding: 16px !important;
+    }
+
+    .profile-container {
+        width: 190px !important;
+        height: 190px !important;
+    }
+
+    .profile-image {
+        width: 140px !important;
+        height: 140px !important;
+    }
+
+    .profile-ring:nth-child(1) { width: 182px !important; height: 182px !important; }
+    .profile-ring:nth-child(2) { width: 158px !important; height: 158px !important; }
+    .profile-ring:nth-child(3) { width: 134px !important; height: 134px !important; }
+
+    .section-title {
+        font-size: 1.7rem !important;
+    }
+
+    .wid-card {
+        padding: 22px 18px !important;
+    }
+
+    .nav-container {
+        padding: 0 12px !important;
+        height: 56px !important;
+    }
+
+    .nav-menu {
+        width: 88vw !important;
+    }
+
+    .timeline-content {
+        padding: 14px !important;
+    }
+
+    .timeline-title {
+        font-size: 1rem !important;
+    }
+
+    .achievement-card {
+        padding: 18px !important;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        font-size: 14px !important;
+    }
+
+    /* QR modal */
+    .qr-modal-content {
+        padding: 24px 16px !important;
+        margin: 16px !important;
+        border-radius: 16px !important;
+    }
+}
+
+/* ─────────────────────────────────────────────────────
+   360px — Very Small Phones
+   ───────────────────────────────────────────────────── */
+@media (max-width: 360px) {
+    .hero-name {
+        font-size: 1.5rem !important;
+    }
+
+    .stat-number {
+        font-size: 1.3rem !important;
+    }
+
+    .btn {
+        padding: 9px 14px !important;
+        font-size: 12px !important;
+    }
+
+    .section-title {
+        font-size: 1.5rem !important;
+    }
+}
+
+/* ================================================================
+   RESPONSIVE PATCH v9.0 — FINAL COMPLETE FIX
+   Fixes nav-right-controls layout + hamburger on the right side
+   ================================================================ */
+
+/* ─── Nav Right Controls: desktop layout ─── */
+.nav-right-controls {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    margin-left: auto !important;
+}
+
+/* Hamburger: hidden on desktop, shown on mobile */
+.nav-toggle {
+    display: none !important;
+    flex-direction: column !important;
+    gap: 6px !important;
+    background: none !important;
+    border: none !important;
+    cursor: pointer !important;
+    padding: 5px !important;
+    z-index: 100001 !important;
+}
+
+.hamburger-line {
+    display: block !important;
+    width: 28px !important;
+    height: 2px !important;
+    background: var(--primary, #00ff88) !important;
+    border-radius: 2px !important;
+    transition: 0.35s ease !important;
+}
+
+/* ─── MOBILE NAV OVERLAY (for clicking outside to close) ─── */
+.nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    z-index: 99970;
+    backdrop-filter: blur(2px);
+}
+
+.nav-overlay.active {
+    display: block;
+}
+
+/* ────────────────────────────────────────────
+   ≤ 1024px — Show hamburger, hide inline menu
+   ──────────────────────────────────────────── */
+@media (max-width: 1024px) {
+
+    /* Show hamburger */
+    .nav-toggle {
+        display: flex !important;
+    }
+
+    /* Hide live clock on tablet to save space */
+    #live-clock {
+        display: none !important;
+    }
+
+    /* Nav menu: slide-in drawer from right */
+    .nav-menu {
+        position: fixed !important;
+        top: 0 !important;
+        right: -110% !important;
+        width: min(300px, 85vw) !important;
+        height: 100vh !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        justify-content: flex-start !important;
+        padding: 80px 24px 40px !important;
+        gap: 4px !important;
+        background: rgba(2, 12, 27, 0.98) !important;
+        backdrop-filter: blur(30px) !important;
+        -webkit-backdrop-filter: blur(30px) !important;
+        border-left: 1px solid rgba(0, 255, 136, 0.18) !important;
+        box-shadow: -10px 0 50px rgba(0,0,0,0.7) !important;
+        transition: right 0.38s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        z-index: 99990 !important;
+        overflow-y: auto !important;
+        list-style: none !important;
+    }
+
+    .nav-menu.active {
+        right: 0 !important;
+    }
+
+    .nav-item {
+        width: 100% !important;
+    }
+
+    .nav-link {
+        display: block !important;
+        width: 100% !important;
+        padding: 13px 18px !important;
+        font-size: 15px !important;
+        border-radius: 8px !important;
+        border-bottom: 1px solid rgba(100, 255, 218, 0.07) !important;
+    }
+
+    .nav-link:hover, .nav-link.active {
+        background: rgba(0, 255, 136, 0.08) !important;
+    }
+}
+
+/* ────────────────────────────────────────────
+   ≤ 768px — Mobile full fixes
+   ──────────────────────────────────────────── */
+@media (max-width: 768px) {
+
+    /* Prevent all horizontal overflow */
+    html, body {
+        max-width: 100vw !important;
+        overflow-x: hidden !important;
+    }
+
+    /* Navbar */
+    .navbar {
+        padding: 8px 0 !important;
+    }
+
+    .nav-container {
+        padding: 0 16px !important;
+        height: 60px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+    }
+
+    .nav-logo {
+        font-size: 1.1rem !important;
+    }
+
+    .nav-logo-img {
+        width: 30px !important;
+        height: 30px !important;
+    }
+
+    .nav-right-controls {
+        gap: 8px !important;
+    }
+
+    /* Hide live clock */
+    #live-clock {
+        display: none !important;
+    }
+
+    /* Hero Section */
+    .hero-section {
+        padding: 80px 16px 40px !important;
+        min-height: 100svh !important;
+    }
+
+    .hero-wrapper {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 24px !important;
+        padding: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .hero-glitch-container {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .hero-text-container {
+        padding: 22px 18px !important;
+        max-width: 100% !important;
+        overflow: hidden !important;
+    }
+
+    .hero-name {
+        font-size: clamp(1.6rem, 8vw, 2.4rem) !important;
+        white-space: normal !important;
+        word-break: break-word !important;
+        line-height: 1.2 !important;
+        letter-spacing: 1px !important;
+    }
+
+    .hero-description {
+        font-size: 14px !important;
+        line-height: 1.6 !important;
+    }
+
+    /* Hero Stats: 2x2 grid */
+    .hero-stats {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 12px !important;
+        padding: 16px !important;
+    }
+
+    .stat-divider {
+        display: none !important;
+    }
+
+    .stat-number {
+        font-size: 1.6rem !important;
+    }
+
+    .stat-label {
+        font-size: 10px !important;
+    }
+
+    /* Hero CTA: stack vertically */
+    .hero-cta {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+        align-items: stretch !important;
+    }
+
+    .hero-cta > * {
+        width: 100% !important;
+        text-align: center !important;
+        justify-content: center !important;
+    }
+
+    .resume-dropdown {
+        width: 100% !important;
+    }
+
+    .resume-dropdown > a,
+    .resume-dropdown > button {
+        width: 100% !important;
+        justify-content: center !important;
+    }
+
+    #resume-menu {
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+    }
+
+    /* Hero meta row */
+    .hero-meta-row {
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 8px !important;
+    }
+
+    /* Hero right column (profile + activity cards) */
+    .hero-right-col {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 20px !important;
+        width: 100% !important;
+    }
+
+    .profile-container {
+        width: 200px !important;
+        height: 200px !important;
+    }
+
+    .profile-image {
+        width: 145px !important;
+        height: 145px !important;
+    }
+
+    .hero-activity-cards {
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 12px !important;
+    }
+
+    .hac-card {
+        width: 100% !important;
+        flex: unset !important;
+    }
+
+    /* Section titles */
+    .section-title {
+        font-size: clamp(1.5rem, 6vw, 2rem) !important;
+    }
+
+    /* What I Do */
+    .what-i-do-section .container,
+    .wid-container {
+        padding: 0 16px !important;
+    }
+
+    .what-i-do-grid,
+    .wid-grid {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+    }
+
+    .wid-card {
+        padding: 22px 18px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    /* About */
+    .about-grid {
+        grid-template-columns: 1fr !important;
+        gap: 24px !important;
+    }
+
+    .about-fun-stats {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 12px !important;
+    }
+
+    .arsenal-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 10px !important;
+    }
+
+    /* Skills bars */
+    .skills-grid,
+    .skills-bars-section .skills-container {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Experience Timeline */
+    .timeline {
+        padding-left: 0 !important;
+    }
+
+    .timeline::before {
+        left: 14px !important;
+    }
+
+    .timeline-item {
+        padding-left: 44px !important;
+        margin-bottom: 20px !important;
+    }
+
+    .timeline-marker {
+        left: 4px !important;
+        width: 22px !important;
+        height: 22px !important;
+        font-size: 10px !important;
+    }
+
+    .timeline-content {
+        padding: 16px !important;
+    }
+
+    .timeline-header {
+        flex-direction: column !important;
+        gap: 6px !important;
+    }
+
+    .timeline-date {
+        align-self: flex-start !important;
+    }
+
+    .timeline-title {
+        font-size: 1rem !important;
+    }
+
+    .timeline-tags {
+        flex-wrap: wrap !important;
+        gap: 6px !important;
+    }
+
+    /* Project Filter Buttons */
+    .project-filters,
+    .filter-buttons {
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+        justify-content: center !important;
+    }
+
+    .filter-btn {
+        padding: 6px 14px !important;
+        font-size: 12px !important;
+    }
+
+    /* Projects Grid */
+    .projects-grid,
+    .project-grid {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+    }
+
+    .project-card {
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+
+    /* Certifications */
+    .certifications-grid,
+    .certs-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 12px !important;
+    }
+
+    .cert-card {
+        padding: 14px !important;
+    }
+
+    .cert-card .cert-issuer {
+        font-size: 11px !important;
+    }
+
+    /* Achievements */
+    .achievements-grid {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+    }
+
+    .achievement-card {
+        flex-direction: column !important;
+        gap: 14px !important;
+        padding: 18px !important;
+    }
+
+    /* Education */
+    .education-grid {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+    }
+
+    .education-card {
+        padding: 18px !important;
+    }
+
+    /* Contact */
+    .contact-content,
+    .contact-grid {
+        grid-template-columns: 1fr !important;
+        gap: 24px !important;
+    }
+
+    .contact-info,
+    .contact-form-wrap {
+        width: 100% !important;
+    }
+
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form select {
+        font-size: 14px !important;
+        padding: 10px 14px !important;
+    }
+
+    /* Footer */
+    .footer-content {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 12px !important;
+        padding: 0 16px !important;
+    }
+
+    .footer-social {
+        justify-content: center !important;
+    }
+
+    /* Floating Buttons */
+    #whatsapp-float {
+        width: 42px !important;
+        height: 42px !important;
+        font-size: 20px !important;
+        bottom: 70px !important;
+        right: 14px !important;
+    }
+
+    #back-to-top {
+        width: 40px !important;
+        height: 40px !important;
+        bottom: 20px !important;
+        right: 14px !important;
+    }
+
+    /* Open to Work Banner */
+    #otw-banner {
+        flex-direction: column !important;
+        align-items: center !important;
+        padding: 8px 14px !important;
+        gap: 4px !important;
+        text-align: center !important;
+    }
+
+    #banner-close {
+        position: static !important;
+        margin-left: 0 !important;
+    }
+}
+
+/* ────────────────────────────────────────────
+   ≤ 480px — Small phones
+   ──────────────────────────────────────────── */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 14px !important;
+    }
+
+    .certifications-grid,
+    .certs-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .arsenal-grid {
+        grid-template-columns: 1fr 1fr !important;
+    }
+
+    .hero-name {
+        font-size: clamp(1.4rem, 7vw, 2rem) !important;
+    }
+
+    .section-title {
+        font-size: 1.4rem !important;
+    }
+
+    .nav-right-controls {
+        gap: 6px !important;
+    }
+
+    #theme-switcher {
+        width: 24px !important;
+        height: 24px !important;
+    }
+
+    .theme-toggle {
+        width: 34px !important;
+        height: 34px !important;
+        font-size: 0.9rem !important;
+        margin-right: 0 !important;
+    }
+}
+
+/* ────────────────────────────────────────────
+   ≤ 360px — Extra-small phones
+   ──────────────────────────────────────────── */
+@media (max-width: 360px) {
+    .hero-name {
+        font-size: 1.3rem !important;
+    }
+
+    .section-title {
+        font-size: 1.3rem !important;
+    }
+
+    .certifications-grid,
+    .certs-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .stat-number {
+        font-size: 1.3rem !important;
+    }
 }

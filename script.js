@@ -134,6 +134,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const navbar = document.getElementById('navbar');
     const navToggle = document.getElementById('nav-toggle');
     const navMenu = document.getElementById('nav-menu');
+    const navOverlay = document.getElementById('nav-overlay');
     const navLinks = document.querySelectorAll('.nav-link');
 
     window.addEventListener('scroll', () => {
@@ -145,14 +146,27 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     navToggle.addEventListener('click', () => {
+        const isActive = navMenu.classList.toggle('active');
         navToggle.classList.toggle('active');
-        navMenu.classList.toggle('active');
+        if (navOverlay) navOverlay.classList.toggle('active', isActive);
+        document.body.style.overflow = isActive ? 'hidden' : '';
     });
+
+    if (navOverlay) {
+        navOverlay.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            navToggle.classList.remove('active');
+            navOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    }
 
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
             navToggle.classList.remove('active');
             navMenu.classList.remove('active');
+            if (navOverlay) navOverlay.classList.remove('active');
+            document.body.style.overflow = '';
         });
     });
 
